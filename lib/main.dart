@@ -1,5 +1,3 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/presentation/root/app.dart';
