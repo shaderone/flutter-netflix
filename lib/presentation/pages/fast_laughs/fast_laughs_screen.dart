@@ -5,10 +5,8 @@ class FastLaughsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Fast laughs page"),
-      ),
+    return const Center(
+      child: Text("Fast laughs page"),
     );
   }
 }
