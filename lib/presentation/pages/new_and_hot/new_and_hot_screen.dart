@@ -5,8 +5,10 @@ class NewAndHotScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("New and Hot"),
+    return const Scaffold(
+      body: Center(
+        child: Text("New and hot page"),
+      ),
     );
   }
 }

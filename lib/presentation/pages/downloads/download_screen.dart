@@ -5,8 +5,10 @@ class DownloadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Downloads page"),
+    return const Scaffold(
+      body: Center(
+        child: Text("Downloads page"),
+      ),
     );
   }
 }
