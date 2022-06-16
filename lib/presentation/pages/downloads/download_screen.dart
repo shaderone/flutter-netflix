@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/presentation/common_widgets/app_bar_widget.dart';
@@ -10,12 +8,7 @@ class DownloadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenDimension = MediaQuery.of(context).size;
-    final posters = [
-      "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5tcuowV4HZRxxvDiWn4bmumuZSk.jpg",
-      "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wrCVHdkBlBWdJUZPvnJWcBRuhSY.jpg",
-      "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/qgrk7r1fV4IjuoeiGS5HOhXNdLJ.jpg",
-    ];
+    final screenDimensions = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(60),
@@ -41,24 +34,12 @@ class DownloadScreen extends StatelessWidget {
             const Text("Introducing downloads for you"),
             const Text(
                 "We'll download a personalised selection of movies and shows for you, so there's always something to watch on your device."),
-            //stack display
-            SizedBox(
-              width: screenDimension.width,
-              height: screenDimension.width,
-              //color: Colors.amber.shade300,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: screenDimension.width / 2.5,
-                    backgroundColor: Colors.grey,
-                  ),
-                  DownloadsPosterWidget(
-                    screenDimension: screenDimension,
-                    posters: posters,
-                  ),
-                ],
-              ),
+            //stack display - remove the container later
+            Container(
+              width: screenDimensions.width,
+              height: screenDimensions.width,
+              //color: Colors.purple.shade100,
+              child: DownloadPosterWidget(screenDimensions: screenDimensions),
             ),
             ElevatedButton(
               onPressed: () {},
