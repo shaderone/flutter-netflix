@@ -23,15 +23,12 @@ class AppBarWidget extends StatelessWidget {
           icon: const Icon(Icons.cast),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Container(
-            width: 24,
-            height: 24,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                    "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"),
-              ),
+          padding: const EdgeInsets.only(right: 10, top: 15, bottom: 15),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Image.network(
+              "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+              fit: BoxFit.cover,
             ),
           ),
         ),
