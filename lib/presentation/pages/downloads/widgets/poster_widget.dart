@@ -30,66 +30,81 @@ class DownloadPosterWidget extends StatelessWidget {
             backgroundColor: Colors.grey.shade800,
           ),
         ),
-        Positioned(
-          bottom: screenDimension.width / 3.75,
-          right: screenDimension.width / 7,
-          child: Transform.rotate(
-            angle: 20 * pi / 180,
-            //angle: 0,
-            child: SizedBox(
-              width: screenDimension.width / 3.75,
-              height: screenDimension.width / 2.75,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5), // Image border
-                child: SizedBox.fromSize(
-                  //size: Size.fromRadius(28), // Image radius
-                  child: Image.network(posters[2], fit: BoxFit.cover),
-                ),
-              ),
-            ),
-          ),
+        DownloadsPosterImageWidget(
+          screenDimension: screenDimension,
+          posterAngle: -20,
+          posterIndex: 2,
+          posterLeftPosition: screenDimension.width / 7,
+          posterRightPosition: null,
         ),
-        Positioned(
-          bottom: screenDimension.width / 3.75,
-          left: screenDimension.width / 7,
-          child: Transform.rotate(
-            angle: -20 * pi / 180,
-            //angle: 0,
-            child: SizedBox(
-              width: screenDimension.width / 3.75,
-              height: screenDimension.width / 2.75,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5), // Image border
-                child: SizedBox.fromSize(
-                  //size: Size.fromRadius(28), // Image radius
-                  child: Image.network(posters[2], fit: BoxFit.cover),
-                ),
-              ),
-            ),
-          ),
+        DownloadsPosterImageWidget(
+          screenDimension: screenDimension,
+          posterAngle: 20,
+          posterIndex: 1,
+          posterLeftPosition: null,
+          posterRightPosition: screenDimension.width / 7,
         ),
-        Positioned(
-          bottom: screenDimension.width / 3.75,
-          //left: screenDimension.width / 3.25,
-          //right: screenDimension.width / 3.25,
-          child: Transform.rotate(
-            //angle: -10 * pi / 180,
-            angle: 0,
-            child: SizedBox(
-              //only change
-              width: screenDimension.width / 3,
-              height: screenDimension.width / 2.25,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5), // Image border
-                child: SizedBox.fromSize(
-                  child: Image.network(posters[1], fit: BoxFit.cover),
-                ),
-              ),
-            ),
-          ),
+        DownloadsPosterImageWidget(
+          screenDimension: screenDimension,
+          posterAngle: 0,
+          posterIndex: 0,
+          posterLeftPosition: null,
+          posterRightPosition: null,
+          posterHeightLimiter: 2.25,
+          posterWidthLimiter: 3,
         ),
-        //download-poster-image-widget(position (left and right)) in positione
       ],
+    );
+  }
+}
+
+//pass posterWidth and height limiter on the last widget in the stack
+class DownloadsPosterImageWidget extends StatelessWidget {
+  const DownloadsPosterImageWidget({
+    Key? key,
+    required this.screenDimension,
+    required this.posterAngle,
+    required this.posterIndex,
+    required this.posterLeftPosition,
+    required this.posterRightPosition,
+    this.posterWidthLimiter = 3.75,
+    this.posterHeightLimiter = 2.75,
+  }) : super(key: key);
+
+  final Size screenDimension;
+  final int posterIndex;
+  final double posterAngle;
+  final double posterWidthLimiter;
+  final double posterHeightLimiter;
+  final double? posterLeftPosition;
+  final double? posterRightPosition;
+
+  final double posterBorderRadius = 5;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: screenDimension.width / 3.75,
+      left: posterLeftPosition,
+      right: posterRightPosition,
+      child: Transform.rotate(
+        angle: posterAngle * pi / 180,
+        child: SizedBox(
+          width: screenDimension.width / posterWidthLimiter,
+          height: screenDimension.width / posterHeightLimiter,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(
+              posterBorderRadius,
+            ),
+            child: SizedBox.fromSize(
+              child: Image.network(
+                posters[posterIndex],
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

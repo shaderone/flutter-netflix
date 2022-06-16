@@ -34,11 +34,9 @@ class DownloadScreen extends StatelessWidget {
             const Text("Introducing downloads for you"),
             const Text(
                 "We'll download a personalised selection of movies and shows for you, so there's always something to watch on your device."),
-            //stack display - remove the container later
-            Container(
+            SizedBox(
               width: screenDimensions.width,
               height: screenDimensions.width,
-              //color: Colors.purple.shade100,
               child: DownloadPosterWidget(screenDimensions: screenDimensions),
             ),
             ElevatedButton(
