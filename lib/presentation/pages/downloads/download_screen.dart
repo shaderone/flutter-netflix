@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/presentation/common_widgets/app_bar_widget.dart';
 import 'package:netflix_clone/presentation/pages/downloads/widgets/poster_widget.dart';
 
@@ -19,14 +20,18 @@ class DownloadScreen extends StatelessWidget {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 5),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(Icons.settings),
                   const SizedBox(width: 10),
                   Text(
                     "Smart Downloads",
-                    style: GoogleFonts.montserrat(fontWeight: FontWeight.w500),
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
                   ),
                 ],
               ),
@@ -68,19 +73,32 @@ class DownloadScreen extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Positioned(
-                  top: -40,
+                  top: -45,
                   right: 0,
                   left: 0,
-                  child: SizedBox(
-                    width: screenDimensions.width,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text("Setup"),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: SizedBox(
+                      width: screenDimensions.width,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            "Set Up",
+                            style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                   child: SizedBox(
                     width: screenDimensions.width,
                     child: ElevatedButton(
@@ -89,9 +107,16 @@ class DownloadScreen extends StatelessWidget {
                             MaterialStateProperty.all(Colors.white),
                       ),
                       onPressed: () {},
-                      child: const Text(
-                        "See what you can download",
-                        style: TextStyle(color: Colors.black),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          "See what you can download",
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            color: backgroundColor,
+                          ),
+                        ),
                       ),
                     ),
                   ),
