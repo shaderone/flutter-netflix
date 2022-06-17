@@ -9,22 +9,18 @@ final posters = [
 ];
 
 class DownloadPosterWidget extends StatelessWidget {
-  final Size screenDimensions;
-  const DownloadPosterWidget({required this.screenDimensions, Key? key})
+  final Size screenDimension;
+  const DownloadPosterWidget({required this.screenDimension, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //screenDimensions will be passed down to here -- done
-    final screenDimension = MediaQuery.of(context).size;
-
     return Stack(
       alignment: Alignment.center,
       clipBehavior: Clip.none,
       children: [
         Positioned(
           bottom: screenDimension.width / 4.75,
-          //right: screenDimension.width / 7,
           child: CircleAvatar(
             radius: 120,
             backgroundColor: Colors.grey.shade800,
