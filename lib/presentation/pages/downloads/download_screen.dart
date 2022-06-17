@@ -64,22 +64,39 @@ class DownloadScreen extends StatelessWidget {
                 screenDimension: screenDimensions,
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Setup"),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  top: -40,
+                  right: 0,
+                  left: 0,
+                  child: SizedBox(
+                    width: screenDimensions.width,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text("Setup"),
+                    ),
+                  ),
                 ),
-                onPressed: () {},
-                child: const Text(
-                  "See what you can download",
-                  style: TextStyle(color: Colors.black),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: SizedBox(
+                    width: screenDimensions.width,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        "See what you can download",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ],
         ),
