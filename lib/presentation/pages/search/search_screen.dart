@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_field.dart';
-//import 'package:netflix_clone/presentation/pages/search/widgets/search_idle.dart';
+// ignore: unused_import
+import 'package:netflix_clone/presentation/pages/search/widgets/search_idle.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_results.dart';
 
 class SearchScreen extends StatelessWidget {
