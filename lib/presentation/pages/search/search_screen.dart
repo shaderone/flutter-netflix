@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_field.dart';
-import 'package:netflix_clone/presentation/pages/search/widgets/search_idle.dart';
+//import 'package:netflix_clone/presentation/pages/search/widgets/search_idle.dart';
+import 'package:netflix_clone/presentation/pages/search/widgets/search_results.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           children: const [
             SearchField(),
-            Expanded(child: IdleSearchWidget()),
+            //Expanded(child: IdleSearchWidget()),
+            Expanded(child: SearchResultsWidget()),
           ],
         ),
       ),
