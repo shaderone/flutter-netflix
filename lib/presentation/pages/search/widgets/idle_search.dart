@@ -17,12 +17,8 @@ class IdleSearchScreen extends StatelessWidget {
         children: [
           Visibility(
             visible: index == 0 ? true : false,
-            child: const Text(
-              "Top Searches",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
-              ),
+            child: const SearchTitle(
+              searchTitle: "Top Searches",
             ),
           ),
           Visibility(
@@ -34,6 +30,25 @@ class IdleSearchScreen extends StatelessWidget {
       ),
       separatorBuilder: (context, index) => const SizedBox(height: 15),
       itemCount: 25,
+    );
+  }
+}
+
+class SearchTitle extends StatelessWidget {
+  final String searchTitle;
+  const SearchTitle({
+    required this.searchTitle,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      searchTitle,
+      style: GoogleFonts.montserrat(
+        fontWeight: FontWeight.bold,
+        fontSize: 28,
+      ),
     );
   }
 }
