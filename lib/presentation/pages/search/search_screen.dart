@@ -13,7 +13,7 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           children: const [
             SearchField(),
-            Expanded(child: IdleSearchScreen()),
+            Expanded(child: IdleSearchWidget()),
           ],
         ),
       ),

@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 const _tempImg =
     "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/56v2KjBlU4XaOv9rVYEQypROD7P.jpg";
 
-class IdleSearchScreen extends StatelessWidget {
-  const IdleSearchScreen({Key? key}) : super(key: key);
+class IdleSearchWidget extends StatelessWidget {
+  const IdleSearchWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -25,7 +25,7 @@ class IdleSearchScreen extends StatelessWidget {
             visible: index == 0 ? true : false,
             child: const SizedBox(height: 20),
           ),
-          const TopSearchListTile(),
+          const TopSearchListItem(),
         ],
       ),
       separatorBuilder: (context, index) => const SizedBox(height: 15),
@@ -53,8 +53,8 @@ class SearchTitle extends StatelessWidget {
   }
 }
 
-class TopSearchListTile extends StatelessWidget {
-  const TopSearchListTile({Key? key}) : super(key: key);
+class TopSearchListItem extends StatelessWidget {
+  const TopSearchListItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
