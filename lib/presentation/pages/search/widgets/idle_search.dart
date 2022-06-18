@@ -9,26 +9,31 @@ class IdleSearchScreen extends StatelessWidget {
   const IdleSearchScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "Top Searches",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (context, index) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: index == 0 ? true : false,
+            child: const Text(
+              "Top Searches",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+              ),
+            ),
           ),
-        ),
-        const SizedBox(height: 20),
-        Flexible(
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (context, index) => const TopSearchListTile(),
-            separatorBuilder: (context, index) => const SizedBox(height: 15),
-            itemCount: 25,
+          Visibility(
+            visible: index == 0 ? true : false,
+            child: const SizedBox(height: 20),
           ),
-        ),
-      ],
+          const TopSearchListTile(),
+        ],
+      ),
+      separatorBuilder: (context, index) => const SizedBox(height: 15),
+      itemCount: 25,
     );
   }
 }
@@ -64,11 +69,14 @@ class TopSearchListTile extends StatelessWidget {
             ),
           ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            CupertinoIcons.play_circle,
-            size: 50,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 15, right: 10),
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              CupertinoIcons.play_circle,
+              size: 45,
+            ),
           ),
         )
       ],
