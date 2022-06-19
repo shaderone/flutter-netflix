@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors.dart';
 
@@ -13,7 +12,13 @@ class VideoListItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: Colors.accents[index + 4],
+          //color: Colors.accents[index + 4],
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image:
+                  NetworkImage("https://wallpapercave.com/wp/wp10504676.jpg"),
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
