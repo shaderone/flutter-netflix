@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/presentation/pages/search/widgets/search_title.dart';
+import 'package:netflix_clone/presentation/common_widgets/title.dart';
 
 const _tempImg =
     "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/56v2KjBlU4XaOv9rVYEQypROD7P.jpg";
@@ -18,9 +18,7 @@ class IdleSearchWidget extends StatelessWidget {
         children: [
           Visibility(
             visible: index == 0 ? true : false,
-            child: const SearchTitle(
-              searchTitle: "Top Searches",
-            ),
+            child: const MainTitle(mainTitle: "Top Searches"),
           ),
           Visibility(
             visible: index == 0 ? true : false,

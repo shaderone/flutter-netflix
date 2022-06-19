@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/presentation/pages/search/widgets/search_title.dart';
+import 'package:netflix_clone/presentation/common_widgets/title.dart';
 
 const posterImg =
     "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5tcuowV4HZRxxvDiWn4bmumuZSk.jpg";
@@ -12,8 +12,8 @@ class SearchResultsWidget extends StatelessWidget {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
-        const SearchTitle(
-          searchTitle: "Movies & TV",
+        const MainTitle(
+          mainTitle: "Movies & TV",
         ),
         const SizedBox(height: 20),
         GridView.count(
