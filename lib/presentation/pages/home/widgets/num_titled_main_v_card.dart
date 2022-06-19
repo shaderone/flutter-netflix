@@ -15,6 +15,7 @@ class NumTitledVCardListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double numberTextFontSize = 140;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -41,26 +42,26 @@ class NumTitledVCardListWidget extends StatelessWidget {
                       ],
                     ),
                     Positioned(
-                      top: 85,
-                      right: 100,
+                      bottom: -30,
+                      left: -10,
                       child: Stack(
                         children: [
                           Text(
                             "${index + 1}",
                             style: TextStyle(
-                              fontSize: 120,
+                              fontSize: numberTextFontSize,
                               fontWeight: FontWeight.w700,
                               foreground: Paint()
                                 ..style = PaintingStyle.stroke
-                                ..strokeWidth = 5
-                                ..color = Colors.white,
+                                ..strokeWidth = 6
+                                ..color = Colors.grey.shade400,
                             ),
                           ),
                           Text(
                             '${index + 1}',
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 120,
+                              fontSize: numberTextFontSize,
                               color: backgroundColor,
                             ),
                           ),
