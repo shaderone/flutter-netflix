@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/presentation/pages/home/widgets/num_titled_main_v_card.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/titled_main_v_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,17 +14,26 @@ class HomeScreen extends StatelessWidget {
           TitledVCardListWidget(
             listTitle: "Released in the Past Year",
             listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yMdFsHKp4YX2CUkAQcZswxXDuoe.jpg",
+                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
           ),
+          TitledVCardListWidget(
+            listTitle: "Trending Now",
+            listImg:
+                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/stTEycfG9928HYGEISBFaG1ngjM.jpg",
+          ),
+          NumTitledVCardListWidget(
+              listTitle: "Top 10 TV Shows in India Today",
+              listImg:
+                  "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wZfwOIlbc81pZb1NIgN2laZQWQk.jpg"),
           TitledVCardListWidget(
             listTitle: "Most Popular",
             listImg:
                 "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gSjykY5ZuVWHK0C7k4CXZ5566No.jpg",
           ),
           TitledVCardListWidget(
-            listTitle: "Trending Now",
+            listTitle: "Tense Dramas",
             listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/stTEycfG9928HYGEISBFaG1ngjM.jpg",
+                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nShEY0JnMOsvdhEnmYvL9mowIKz.jpg",
           ),
         ],
       ),
