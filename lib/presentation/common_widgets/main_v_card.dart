@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MainCardVWidget extends StatelessWidget {
+class MainVCardWidget extends StatelessWidget {
   final double horizontalPadding;
   final String poster;
-  const MainCardVWidget({
+  const MainVCardWidget({
     //temp
     required this.poster,
     this.horizontalPadding = 0,

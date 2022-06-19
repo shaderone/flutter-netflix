@@ -25,7 +25,7 @@ class SearchResultsWidget extends StatelessWidget {
           childAspectRatio: 1 / 1.5,
           shrinkWrap: true,
           children: List.generate(15, (index) {
-            return const MainCardVWidget(
+            return const MainVCardWidget(
               poster: posterImg,
             );
           }),
