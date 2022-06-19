@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/presentation/common_widgets/main_v_card.dart';
 import 'package:netflix_clone/presentation/common_widgets/title.dart';
 
 const posterImg =
@@ -24,27 +25,12 @@ class SearchResultsWidget extends StatelessWidget {
           childAspectRatio: 1 / 1.5,
           shrinkWrap: true,
           children: List.generate(15, (index) {
-            return const MainCardVWidget();
+            return const MainCardVWidget(
+              poster: posterImg,
+            );
           }),
         ),
       ],
-    );
-  }
-}
-
-class MainCardVWidget extends StatelessWidget {
-  const MainCardVWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(5),
-      child: SizedBox.fromSize(
-        child: Image.network(
-          posterImg,
-          fit: BoxFit.cover,
-        ),
-      ),
     );
   }
 }
