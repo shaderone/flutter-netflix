@@ -30,7 +30,7 @@ class TitledVCardListWidget extends StatelessWidget {
               children: List.generate(10, (index) {
                 return MainVCardWidget(
                   poster: listImg,
-                  horizontalPadding: index == 0 ? 0 : 5,
+                  leftPadding: index == 0 ? 0 : 15,
                 );
               }),
             ),
