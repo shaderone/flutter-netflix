@@ -42,7 +42,7 @@ class NumTitledVCardListWidget extends StatelessWidget {
                       ],
                     ),
                     Positioned(
-                      bottom: -30,
+                      bottom: -32,
                       left: -10,
                       child: Stack(
                         children: [
