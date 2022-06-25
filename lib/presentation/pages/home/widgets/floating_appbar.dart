@@ -1,59 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class FloatingAppbarWidget extends StatelessWidget {
-  final double scrollOffset;
-  const FloatingAppbarWidget({
+class CustomFloatingAppbar extends StatelessWidget {
+  final bool innerBoxIsScrolled;
+  const CustomFloatingAppbar({
     Key? key,
-    this.scrollOffset = 0.0,
+    required this.innerBoxIsScrolled,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      systemOverlayStyle:
-          const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-      expandedHeight: 110,
-      //background does not change
-      backgroundColor:
-          Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
-      floating: true,
-      elevation: 0,
-      pinned: true,
-      title: Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: SizedBox(
+    return SliverOverlapAbsorber(
+      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+      sliver: SliverAppBar(
+        floating: true,
+        pinned: true,
+        snap: true,
+        elevation: 10,
+        forceElevated: innerBoxIsScrolled,
+        backgroundColor: Colors.transparent,
+        leading: SizedBox(
           width: 30,
           height: 60,
-          child: Image.asset(
-            "assets/logo.png",
-            //width: 80,
+          child: Image.asset("assets/logo.png"),
+        ),
+        actions: [
+          IconButton(
+            splashRadius: 20,
+            onPressed: () {},
+            icon: const Icon(Icons.search),
           ),
-        ),
-      ),
-      centerTitle: false,
-      actions: [
-        IconButton(
-          splashRadius: 20,
-          onPressed: () {},
-          icon: const Icon(Icons.search),
-        ),
-        IconButton(
-          splashRadius: 20,
-          onPressed: () {},
-          icon: const Icon(Icons.more_vert),
-        ),
-      ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(48),
-        child: TabBar(
-          padding: const EdgeInsets.symmetric(vertical: 0),
-          indicatorColor: Colors.transparent.withOpacity(0.01),
-          tabs: const [
-            CustomTab(name: "Tv Shows"),
-            CustomTab(name: "Movies"),
-            CustomTab(name: "Categories"),
-          ],
+          IconButton(
+            splashRadius: 20,
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(68),
+          //prefferedSize = 68 because it is the min value to fix overflow
+          child: TabBar(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            indicatorColor: Colors.transparent.withOpacity(0.01),
+            tabs: const [
+              CustomTab(name: "Tv Shows"),
+              CustomTab(name: "Movies"),
+              CustomTab(name: "Categories"),
+            ],
+          ),
         ),
       ),
     );
