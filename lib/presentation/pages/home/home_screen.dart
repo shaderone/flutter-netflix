@@ -12,111 +12,116 @@ class HomeScreen extends StatelessWidget {
       length: 3,
       initialIndex: 0,
       child: Scaffold(
-        body: Stack(
-          children: [
-            NestedScrollView(
-              //floatHeaderSlivers: true,
-              headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverAppBar(
-                  expandedHeight: 120,
-                  backgroundColor: Colors.transparent,
-                  floating: true,
-                  //snap: true,
-                  pinned: true,
-                  title: Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: SizedBox(
-                      width: 30,
-                      height: 60,
-                      child: Image.asset(
-                        "assets/logo.png",
-                        //width: 80,
-                      ),
-                    ),
-                  ),
-                  centerTitle: false,
-                  actions: [
-                    IconButton(
-                      splashRadius: 20,
-                      onPressed: () {},
-                      icon: const Icon(Icons.search),
-                    ),
-                    IconButton(
-                      splashRadius: 20,
-                      onPressed: () {},
-                      icon: const Icon(Icons.more_vert),
-                    ),
-                  ],
-                  bottom: PreferredSize(
-                    preferredSize: const Size.fromHeight(68),
-                    child: TabBar(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      indicatorColor: Colors.transparent.withOpacity(0.01),
-                      tabs: const [
-                        Tab(
-                          child: Text(
-                            "Tv Shows",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            "Movies",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            "Categories",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
+        extendBody: true,
+        extendBodyBehindAppBar: true,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverOverlapAbsorber(
+              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+              sliver: SliverAppBar(
+                floating: true,
+                pinned: true,
+                snap: true,
+                elevation: 50,
+                forceElevated: innerBoxIsScrolled,
+                backgroundColor: Colors.transparent,
+                leading: SizedBox(
+                  width: 30,
+                  height: 60,
+                  child: Image.asset(
+                    "assets/logo.png",
+                    //width: 80,
                   ),
                 ),
-              ],
-              body: ListView(
-                padding: EdgeInsets.zero,
-                physics: const BouncingScrollPhysics(),
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 50),
-                    child: HeroWidget(),
+                actions: [
+                  IconButton(
+                    splashRadius: 20,
+                    onPressed: () {},
+                    icon: const Icon(Icons.search),
                   ),
-                  SizedBox(height: 20),
-                  TitledVCardListWidget(
-                    listTitle: "Released in the Past Year",
-                    listImg:
-                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
-                  ),
-                  TitledVCardListWidget(
-                    listTitle: "Trending Now",
-                    listImg:
-                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/stTEycfG9928HYGEISBFaG1ngjM.jpg",
-                  ),
-                  NumTitledVCardListWidget(
-                    listTitle: "Top 10 TV Shows in India Today",
-                    listImg:
-                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wZfwOIlbc81pZb1NIgN2laZQWQk.jpg",
-                  ),
-                  TitledVCardListWidget(
-                    listTitle: "Most Popular",
-                    listImg:
-                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gSjykY5ZuVWHK0C7k4CXZ5566No.jpg",
-                  ),
-                  TitledVCardListWidget(
-                    listTitle: "Tense Dramas",
-                    listImg:
-                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nShEY0JnMOsvdhEnmYvL9mowIKz.jpg",
+                  IconButton(
+                    splashRadius: 20,
+                    onPressed: () {},
+                    icon: const Icon(Icons.more_vert),
                   ),
                 ],
+                bottom: PreferredSize(
+                  preferredSize: const Size.fromHeight(68),
+                  child: TabBar(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    indicatorColor: Colors.transparent.withOpacity(0.01),
+                    tabs: const [
+                      Tab(
+                        child: Text(
+                          "Tv Shows",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          "Movies",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          "Categories",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
+          body: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Positioned.fill(
+                top: -55,
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  physics: const BouncingScrollPhysics(),
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 50),
+                      child: HeroWidget(),
+                    ),
+                    SizedBox(height: 20),
+                    TitledVCardListWidget(
+                      listTitle: "Released in the Past Year",
+                      listImg:
+                          "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+                    ),
+                    TitledVCardListWidget(
+                      listTitle: "Trending Now",
+                      listImg:
+                          "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/stTEycfG9928HYGEISBFaG1ngjM.jpg",
+                    ),
+                    NumTitledVCardListWidget(
+                      listTitle: "Top 10 TV Shows in India Today",
+                      listImg:
+                          "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wZfwOIlbc81pZb1NIgN2laZQWQk.jpg",
+                    ),
+                    TitledVCardListWidget(
+                      listTitle: "Most Popular",
+                      listImg:
+                          "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gSjykY5ZuVWHK0C7k4CXZ5566No.jpg",
+                    ),
+                    TitledVCardListWidget(
+                      listTitle: "Tense Dramas",
+                      listImg:
+                          "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nShEY0JnMOsvdhEnmYvL9mowIKz.jpg",
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: const BottomNavWidget(),
       ),
@@ -132,20 +137,31 @@ class HeroWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.center,
+      alignment: Alignment.bottomCenter,
       clipBehavior: Clip.none,
       children: [
         AspectRatio(
-          aspectRatio: 2 / 2.25,
+          aspectRatio: 4 / 5,
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.lightBlue.shade100.withOpacity(.1),
-              image: const DecorationImage(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
                 fit: BoxFit.cover,
                 alignment: Alignment.bottomCenter,
                 image: NetworkImage(
                   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/A7CzMZBitf00BAtb1kJa50pWPgV.jpg",
                 ),
+              ),
+            ),
+          ),
+        ),
+        AspectRatio(
+          aspectRatio: 4 / 5,
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color.fromARGB(145, 0, 0, 0), Colors.transparent],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
               ),
             ),
           ),
