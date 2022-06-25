@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/presentation/common_widgets/app_bar_widget.dart';
 import 'package:netflix_clone/presentation/pages/downloads/widgets/poster_widget.dart';
+import 'package:netflix_clone/presentation/root/widgets/bottom_nav.dart';
 
 class DownloadScreen extends StatelessWidget {
   const DownloadScreen({Key? key}) : super(key: key);
@@ -126,6 +127,7 @@ class DownloadScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavWidget(),
     );
   }
 }

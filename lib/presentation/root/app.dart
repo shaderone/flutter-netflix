@@ -19,15 +19,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: ValueListenableBuilder(
-            valueListenable: currentNavIndexNotifier,
-            builder: (BuildContext context, int newpageIndex, Widget? _) {
-              return _mainPages[newpageIndex];
-            }),
-      ),
-      bottomNavigationBar: const BottomNavWidget(),
+    return ValueListenableBuilder(
+      valueListenable: currentNavIndexNotifier,
+      builder: (BuildContext context, int newpageIndex, Widget? _) {
+        return _mainPages[newpageIndex];
+      },
     );
   }
 }
