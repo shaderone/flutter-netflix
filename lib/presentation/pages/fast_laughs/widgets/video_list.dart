@@ -15,6 +15,7 @@ class VideoListItem extends StatelessWidget {
           //color: Colors.accents[index + 4],
           decoration: const BoxDecoration(
             image: DecorationImage(
+              fit: BoxFit.cover,
               image:
                   NetworkImage("https://wallpapercave.com/wp/wp10504676.jpg"),
             ),

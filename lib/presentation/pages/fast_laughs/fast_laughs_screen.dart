@@ -8,12 +8,14 @@ class FastLaughsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        children: List.generate(5, (index) {
-          return VideoListItem(index: index);
-        }),
+      body: SafeArea(
+        child: PageView(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          children: List.generate(5, (index) {
+            return VideoListItem(index: index);
+          }),
+        ),
       ),
       bottomNavigationBar: const BottomNavWidget(),
     );
