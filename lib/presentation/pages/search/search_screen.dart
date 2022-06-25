@@ -3,6 +3,7 @@ import 'package:netflix_clone/presentation/pages/search/widgets/search_field.dar
 // ignore: unused_import
 import 'package:netflix_clone/presentation/pages/search/widgets/search_idle.dart';
 import 'package:netflix_clone/presentation/pages/search/widgets/search_results.dart';
+import 'package:netflix_clone/presentation/root/widgets/bottom_nav.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class SearchScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavWidget(),
     );
   }
 }

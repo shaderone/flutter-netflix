@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/num_titled_main_v_card.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/titled_main_v_card.dart';
+import 'package:netflix_clone/presentation/root/widgets/bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -79,6 +80,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
               body: ListView(
+                padding: EdgeInsets.zero,
                 physics: const BouncingScrollPhysics(),
                 children: const [
                   Padding(
@@ -116,6 +118,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
+        bottomNavigationBar: const BottomNavWidget(),
       ),
     );
   }
