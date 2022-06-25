@@ -7,41 +7,115 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: const [
-          Padding(
-            padding: EdgeInsets.only(bottom: 50),
-            child: HeroWidget(),
-          ),
-          SizedBox(height: 20),
-          TitledVCardListWidget(
-            listTitle: "Released in the Past Year",
-            listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
-          ),
-          TitledVCardListWidget(
-            listTitle: "Trending Now",
-            listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/stTEycfG9928HYGEISBFaG1ngjM.jpg",
-          ),
-          NumTitledVCardListWidget(
-            listTitle: "Top 10 TV Shows in India Today",
-            listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wZfwOIlbc81pZb1NIgN2laZQWQk.jpg",
-          ),
-          TitledVCardListWidget(
-            listTitle: "Most Popular",
-            listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gSjykY5ZuVWHK0C7k4CXZ5566No.jpg",
-          ),
-          TitledVCardListWidget(
-            listTitle: "Tense Dramas",
-            listImg:
-                "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nShEY0JnMOsvdhEnmYvL9mowIKz.jpg",
-          ),
-        ],
+    return DefaultTabController(
+      length: 3,
+      initialIndex: 0,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            NestedScrollView(
+              //floatHeaderSlivers: true,
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                SliverAppBar(
+                  expandedHeight: 120,
+                  backgroundColor: Colors.transparent,
+                  floating: true,
+                  //snap: true,
+                  pinned: true,
+                  title: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: SizedBox(
+                      width: 30,
+                      height: 60,
+                      child: Image.asset(
+                        "assets/logo.png",
+                        //width: 80,
+                      ),
+                    ),
+                  ),
+                  centerTitle: false,
+                  actions: [
+                    IconButton(
+                      splashRadius: 20,
+                      onPressed: () {},
+                      icon: const Icon(Icons.search),
+                    ),
+                    IconButton(
+                      splashRadius: 20,
+                      onPressed: () {},
+                      icon: const Icon(Icons.more_vert),
+                    ),
+                  ],
+                  bottom: PreferredSize(
+                    preferredSize: const Size.fromHeight(68),
+                    child: TabBar(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      indicatorColor: Colors.transparent.withOpacity(0.01),
+                      tabs: const [
+                        Tab(
+                          child: Text(
+                            "Tv Shows",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            "Movies",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            "Categories",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+              body: ListView(
+                physics: const BouncingScrollPhysics(),
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 50),
+                    child: HeroWidget(),
+                  ),
+                  SizedBox(height: 20),
+                  TitledVCardListWidget(
+                    listTitle: "Released in the Past Year",
+                    listImg:
+                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+                  ),
+                  TitledVCardListWidget(
+                    listTitle: "Trending Now",
+                    listImg:
+                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/stTEycfG9928HYGEISBFaG1ngjM.jpg",
+                  ),
+                  NumTitledVCardListWidget(
+                    listTitle: "Top 10 TV Shows in India Today",
+                    listImg:
+                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wZfwOIlbc81pZb1NIgN2laZQWQk.jpg",
+                  ),
+                  TitledVCardListWidget(
+                    listTitle: "Most Popular",
+                    listImg:
+                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gSjykY5ZuVWHK0C7k4CXZ5566No.jpg",
+                  ),
+                  TitledVCardListWidget(
+                    listTitle: "Tense Dramas",
+                    listImg:
+                        "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nShEY0JnMOsvdhEnmYvL9mowIKz.jpg",
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
