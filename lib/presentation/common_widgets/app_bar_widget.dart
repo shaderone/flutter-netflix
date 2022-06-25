@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/core/colors.dart';
@@ -19,16 +20,19 @@ class AppBarWidget extends StatelessWidget {
       ),
       actions: [
         IconButton(
+          splashRadius: 20,
+          iconSize: 32,
           onPressed: () {},
-          icon: const Icon(Icons.cast),
+          icon: const Icon(CupertinoIcons.search),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10, top: 15, bottom: 15),
+          padding:
+              const EdgeInsets.only(right: 15, top: 12, bottom: 12, left: 15),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: Image.network(
-              "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
               fit: BoxFit.cover,
+              "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
             ),
           ),
         ),

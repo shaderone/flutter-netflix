@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomFloatingAppbar extends StatelessWidget {
@@ -26,13 +27,20 @@ class CustomFloatingAppbar extends StatelessWidget {
         actions: [
           IconButton(
             splashRadius: 20,
+            iconSize: 32,
             onPressed: () {},
-            icon: const Icon(Icons.search),
+            icon: const Icon(CupertinoIcons.search),
           ),
-          IconButton(
-            splashRadius: 20,
-            onPressed: () {},
-            icon: const Icon(Icons.more_vert),
+          Padding(
+            padding:
+                const EdgeInsets.only(right: 15, top: 12, bottom: 12, left: 15),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image.network(
+                fit: BoxFit.cover,
+                "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+              ),
+            ),
           ),
         ],
         bottom: PreferredSize(
