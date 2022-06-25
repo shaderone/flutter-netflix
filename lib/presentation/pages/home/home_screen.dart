@@ -5,8 +5,34 @@ import 'package:netflix_clone/presentation/pages/home/widgets/num_titled_main_v_
 import 'package:netflix_clone/presentation/pages/home/widgets/titled_main_v_card.dart';
 import 'package:netflix_clone/presentation/root/widgets/bottom_nav.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  double scrollOffset = 0.0;
+
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          scrollOffset = _scrollController.offset;
+        });
+      });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +43,10 @@ class HomeScreen extends StatelessWidget {
         extendBody: true,
         extendBodyBehindAppBar: true,
         body: NestedScrollView(
+          controller: _scrollController,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             CustomFloatingAppbar(
+              scrollOffset: scrollOffset,
               innerBoxIsScrolled: innerBoxIsScrolled,
             ),
           ],
@@ -28,7 +56,7 @@ class HomeScreen extends StatelessWidget {
               Positioned.fill(
                 top: -55,
                 child: ListView(
-                  padding: EdgeInsets.zero,
+                  padding: const EdgeInsets.only(top: 0, bottom: 90),
                   physics: const BouncingScrollPhysics(),
                   children: const [
                     Padding(

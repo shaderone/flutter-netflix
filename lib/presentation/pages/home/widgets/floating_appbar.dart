@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/core/colors.dart';
 
 class CustomFloatingAppbar extends StatelessWidget {
   final bool innerBoxIsScrolled;
+  final double scrollOffset;
   const CustomFloatingAppbar({
     Key? key,
+    this.scrollOffset = 0.0,
     required this.innerBoxIsScrolled,
   }) : super(key: key);
 
@@ -16,9 +19,9 @@ class CustomFloatingAppbar extends StatelessWidget {
         floating: true,
         pinned: true,
         snap: true,
-        elevation: 10,
-        forceElevated: innerBoxIsScrolled,
-        backgroundColor: Colors.transparent,
+        backgroundColor: backgroundColor.withOpacity(
+          (scrollOffset / 80).clamp(0, 1).toDouble(),
+        ),
         leading: SizedBox(
           width: 30,
           height: 60,
