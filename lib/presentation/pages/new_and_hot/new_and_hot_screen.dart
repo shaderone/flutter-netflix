@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/core/colors.dart';
-import 'package:netflix_clone/presentation/pages/new_and_hot/synced_appbar.dart';
+import 'package:netflix_clone/presentation/pages/new_and_hot/widgets/coming_soon_widget.dart';
+import 'package:netflix_clone/presentation/pages/new_and_hot/widgets/synced_appbar.dart';
 import 'package:netflix_clone/presentation/root/widgets/bottom_nav.dart';
 
 class NewAndHotScreen extends StatelessWidget {
@@ -21,7 +20,7 @@ class NewAndHotScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            _buildComingSoon(context),
+            _buildComingSoon(),
             _buildEveryonesWatching(),
           ],
         ),
@@ -30,9 +29,14 @@ class NewAndHotScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildComingSoon(context) {
-    //final screenDimension = MediaQuery.of(context).size;
-    return ListView();
+  Widget _buildComingSoon() {
+    return ListView(
+      shrinkWrap: true,
+      physics:
+          const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      children: const [ComingSoonWidget()],
+    );
   }
 
   Widget _buildEveryonesWatching() {
