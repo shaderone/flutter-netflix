@@ -109,9 +109,11 @@ class HeroWidget extends StatelessWidget {
 class HeroStats extends StatelessWidget {
   final String stat;
   final bool isFinalStat;
+  final Color dotColor;
   const HeroStats({
     required this.stat,
     this.isFinalStat = false,
+    this.dotColor = Colors.white,
     Key? key,
   }) : super(key: key);
 
@@ -123,7 +125,7 @@ class HeroStats extends StatelessWidget {
         const SizedBox(width: 5),
         Visibility(
           visible: isFinalStat ? false : true,
-          child: const Text("•", style: TextStyle(color: Colors.red)),
+          child: Text("•", style: TextStyle(color: dotColor)),
         ),
         const SizedBox(width: 5)
       ],
@@ -152,7 +154,8 @@ class HeroActions extends StatelessWidget {
         Text(
           iconText,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style:
+              const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
         ),
       ],
     );
