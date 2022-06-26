@@ -32,14 +32,22 @@ class NewAndHotScreen extends StatelessWidget {
   Widget _buildComingSoon() {
     return ListView(
       shrinkWrap: true,
-      physics:
-          const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+      physics: const AlwaysScrollableScrollPhysics(
+        parent: BouncingScrollPhysics(),
+      ),
       padding: const EdgeInsets.symmetric(vertical: 10),
-      children: const [ComingSoonWidget()],
+      children: const [NewAndHotDatedContent()],
     );
   }
 
   Widget _buildEveryonesWatching() {
-    return ListView();
+    return ListView(
+      shrinkWrap: true,
+      physics: const AlwaysScrollableScrollPhysics(
+        parent: BouncingScrollPhysics(),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      children: const [NewAndHotContent()],
+    );
   }
 }
