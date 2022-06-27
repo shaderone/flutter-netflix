@@ -30,16 +30,38 @@ class NewAndHotScreen extends StatelessWidget {
   }
 
   Widget _buildComingSoon() {
-    return ListView(
-      shrinkWrap: true,
-      physics:
-          const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      children: const [ComingSoonWidget()],
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        return ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          children: const [NewAndHotDatedContent()],
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(),
+      itemCount: 10,
     );
   }
 
   Widget _buildEveryonesWatching() {
-    return ListView();
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        return ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          children: const [
+            NewAndHotContent(
+              shareIcon: true,
+            )
+          ],
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(height: 10),
+      itemCount: 10,
+    );
   }
 }
