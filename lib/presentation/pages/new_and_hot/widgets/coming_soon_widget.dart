@@ -55,8 +55,10 @@ class NewAndHotDate extends StatelessWidget {
 }
 
 class NewAndHotContent extends StatelessWidget {
+  final bool shareIcon;
   const NewAndHotContent({
     Key? key,
+    this.shareIcon = false,
   }) : super(key: key);
 
   @override
@@ -112,13 +114,40 @@ class NewAndHotContent extends StatelessWidget {
                                 width: 170,
                                 fit: BoxFit.cover,
                               ),
-                              const HeroActions(
-                                icon: Icons.notifications_none,
-                                iconText: "Remind me",
+                              Visibility(
+                                visible: !shareIcon ? true : false,
+                                child: const HeroActions(
+                                  icon: Icons.notifications_none,
+                                  iconText: "Remind me",
+                                ),
                               ),
-                              const HeroActions(
-                                icon: Icons.info_outline,
-                                iconText: "Info",
+                              Visibility(
+                                visible: !shareIcon ? true : false,
+                                child: const HeroActions(
+                                  icon: Icons.info_outline,
+                                  iconText: "Info",
+                                ),
+                              ),
+                              Visibility(
+                                visible: shareIcon ? true : false,
+                                child: const HeroActions(
+                                  icon: Icons.send,
+                                  iconText: "Share",
+                                ),
+                              ),
+                              Visibility(
+                                visible: shareIcon ? true : false,
+                                child: const HeroActions(
+                                  icon: Icons.add,
+                                  iconText: "My List",
+                                ),
+                              ),
+                              Visibility(
+                                visible: shareIcon ? true : false,
+                                child: const HeroActions(
+                                  icon: Icons.play_arrow,
+                                  iconText: "Play",
+                                ),
                               ),
                             ],
                           ),
