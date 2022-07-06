@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/floating_appbar.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/hero.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/num_titled_main_v_card.dart';
@@ -36,6 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      ),
+    );
     return DefaultTabController(
       length: 3,
       initialIndex: 0,

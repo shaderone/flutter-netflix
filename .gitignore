@@ -48,3 +48,4 @@ app.*.map.json
 
 log.txt
 .vscode
+api_key.dart
