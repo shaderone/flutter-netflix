@@ -1,6 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/bloc/downloads/downloads_bloc.dart';
+import 'package:netflix_clone/bloc/downloads/downloads_state.dart';
+import 'package:netflix_clone/core/strings.dart';
 
 final posters = [
   "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5tcuowV4HZRxxvDiWn4bmumuZSk.jpg",
@@ -79,28 +83,40 @@ class DownloadsPosterImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: screenDimension.width / 3.75,
-      left: posterLeftPosition,
-      right: posterRightPosition,
-      child: Transform.rotate(
-        angle: posterAngle * pi / 180,
-        child: SizedBox(
-          width: screenDimension.width / posterWidthLimiter,
-          height: screenDimension.width / posterHeightLimiter,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(
-              posterBorderRadius,
-            ),
-            child: SizedBox.fromSize(
-              child: Image.network(
-                posters[posterIndex],
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
+    //This function will only be called after the initial build
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<DownloadsBloc>(context).add(
+        const DownloadsEvent.getDownloadsPosters(),
       ),
+    );
+    return BlocBuilder<DownloadsBloc, DownloadsState>(
+      builder: (context, state) {
+        return state.isLoading
+            ? const CircularProgressIndicator()
+            : Positioned(
+                bottom: screenDimension.width / 3.75,
+                left: posterLeftPosition,
+                right: posterRightPosition,
+                child: Transform.rotate(
+                  angle: posterAngle * pi / 180,
+                  child: SizedBox(
+                    width: screenDimension.width / posterWidthLimiter,
+                    height: screenDimension.width / posterHeightLimiter,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                        posterBorderRadius,
+                      ),
+                      child: SizedBox.fromSize(
+                        child: Image.network(
+                          '$imageAppendUrl${state.downloads[posterIndex].posterPath}',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+      },
     );
   }
 }

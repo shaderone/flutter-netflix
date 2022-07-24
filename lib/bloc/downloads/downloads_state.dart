@@ -8,7 +8,7 @@ part 'downloads_state.freezed.dart';
 class DownloadsState with _$DownloadsState {
   const factory DownloadsState({
     required bool isLoading,
-    List<Downloads>? downloads,
+    required List<Downloads> downloads,
     required Option<Either<MainFailure, List<Downloads>>>
         downloadsFailureOrSuccessOption,
   }) = _DownloadsState;
@@ -18,6 +18,7 @@ class DownloadsState with _$DownloadsState {
     return DownloadsState(
       isLoading: false,
       downloadsFailureOrSuccessOption: none(),
+      downloads: [],
     );
   }
 }
