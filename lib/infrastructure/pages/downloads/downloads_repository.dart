@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/domain/api_endpoints.dart';
@@ -14,10 +16,9 @@ class DownloadsRepository implements IDownloadsRepo {
     try {
       final Response res = await Dio(BaseOptions()).get(ApiEndpoints.downloads);
       if (res.statusCode == 200 || res.statusCode == 201) {
+        //log(res.data.toString());
         final downloadsPosters = (res.data['results'] as List)
-            .map(
-              (item) => Downloads.fromJson(item),
-            )
+            .map((item) => Downloads.fromJson(item))
             .toList();
         //print(downloadsPosters);
         return Right(downloadsPosters);

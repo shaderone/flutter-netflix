@@ -26,7 +26,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       final Either<MainFailure, List<Downloads>>
           possibleApiResponseOnDownloadsPage =
           await iDownloadsRepo.getDownloadsPosters();
-      log(possibleApiResponseOnDownloadsPage.toString());
+      //log(possibleApiResponseOnDownloadsPage.toString());
       emit(
         possibleApiResponseOnDownloadsPage.fold(
           (failure) => state.copyWith(

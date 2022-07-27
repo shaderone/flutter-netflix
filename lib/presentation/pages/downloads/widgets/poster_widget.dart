@@ -108,6 +108,7 @@ class DownloadsPosterImageWidget extends StatelessWidget {
                       child: SizedBox.fromSize(
                         child: Image.network(
                           '$imageAppendUrl${state.downloads[posterIndex].posterPath}',
+                          //posters[0],
                           fit: BoxFit.cover,
                         ),
                       ),
