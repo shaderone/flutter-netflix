@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/bloc/downloads/downloads_bloc.dart';
-import 'package:netflix_clone/bloc/downloads/downloads_state.dart';
 import 'package:netflix_clone/core/strings.dart';
 
 final posters = [
