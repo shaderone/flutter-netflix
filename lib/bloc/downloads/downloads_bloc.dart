@@ -2,19 +2,19 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
-import 'package:netflix_clone/bloc/downloads/downloads_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/domain/common_failures/main_failure.dart';
 import 'package:netflix_clone/domain/pages/downloads/i_downloads_repo.dart';
 import 'package:netflix_clone/domain/pages/downloads/modals/downloads_modal.dart';
 
 part 'downloads_event.dart';
+part 'downloads_state.dart';
 part 'downloads_bloc.freezed.dart';
 
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
-  late IDownloadsRepo iDownloadsRepo;
+  final IDownloadsRepo iDownloadsRepo;
   DownloadsBloc(this.iDownloadsRepo) : super(DownloadsState.initial()) {
     on<_GetDownloadsPosters>((event, emit) async {
       emit(

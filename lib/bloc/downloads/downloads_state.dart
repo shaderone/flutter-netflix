@@ -1,8 +1,4 @@
-import 'package:netflix_clone/domain/common_failures/main_failure.dart';
-import 'package:netflix_clone/domain/pages/downloads/modals/downloads_modal.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-part 'downloads_state.freezed.dart';
+part of 'downloads_bloc.dart';
 
 @freezed
 class DownloadsState with _$DownloadsState {
