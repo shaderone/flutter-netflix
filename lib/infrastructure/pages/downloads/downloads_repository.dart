@@ -20,7 +20,7 @@ class DownloadsRepository implements IDownloadsRepo {
         final downloadsPosters = (res.data['results'] as List)
             .map((item) => Downloads.fromJson(item))
             .toList();
-        //print(downloadsPosters);
+        log(downloadsPosters.toString());
         return Right(downloadsPosters);
       } else {
         //for any other statuscode

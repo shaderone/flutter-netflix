@@ -31,7 +31,9 @@ class IdleSearchWidget extends StatelessWidget {
                         child: const SizedBox(height: 20),
                       ),
                       TopSearchListItem(
-                        title: singleMediaInfo.posterTitle ?? "No title",
+                        title: singleMediaInfo.posterTitle ??
+                            singleMediaInfo.posterName ??
+                            "no title",
                         backdropPath:
                             singleMediaInfo.backdropPath ?? "No poster",
                       )
