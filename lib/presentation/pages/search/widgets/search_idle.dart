@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,7 @@ class IdleSearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
+        //log(state.idleListData.runtimeType.toString());
         return state.isSearchLoading
             ? const Center(child: CircularProgressIndicator())
             : ListView.separated(
@@ -63,6 +66,7 @@ class TopSearchListItem extends StatelessWidget {
     final screenDimensions = MediaQuery.of(context).size;
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
+        log(state.toString());
         if (state.isError) {
           return const Text("Error");
         } else if (state.idleListData.isEmpty) {

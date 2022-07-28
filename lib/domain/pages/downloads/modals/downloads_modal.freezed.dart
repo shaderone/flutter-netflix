@@ -22,11 +22,14 @@ Downloads _$DownloadsFromJson(Map<String, dynamic> json) {
 mixin _$Downloads {
 // ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
-  String? get posterPath => throw _privateConstructorUsedError;
+  String? get posterPath =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "backdrop_path")
-  String? get backdropPath => throw _privateConstructorUsedError;
+  String? get backdropPath =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "title")
-  String? get posterTitle => throw _privateConstructorUsedError;
+  String? get posterTitle =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "original_name")
   String? get posterName => throw _privateConstructorUsedError;
 
@@ -150,12 +153,15 @@ class _$_Downloads implements _Downloads {
   @override
   @JsonKey(name: "poster_path")
   final String? posterPath;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "backdrop_path")
   final String? backdropPath;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "title")
   final String? posterTitle;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "original_name")
   final String? posterName;
@@ -214,13 +220,13 @@ abstract class _Downloads implements Downloads {
   @override // ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "backdrop_path")
   String? get backdropPath => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "title")
   String? get posterTitle => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "original_name")
   String? get posterName => throw _privateConstructorUsedError;
   @override
