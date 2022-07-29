@@ -6,17 +6,12 @@ part of 'downloads_modal.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Downloads _$$_DownloadsFromJson(Map<String, dynamic> json) => _$_Downloads(
+_$_DownloadsModal _$$_DownloadsModalFromJson(Map<String, dynamic> json) =>
+    _$_DownloadsModal(
       posterPath: json['poster_path'] as String?,
-      backdropPath: json['backdrop_path'] as String?,
-      posterTitle: json['title'] as String?,
-      posterName: json['original_name'] as String?,
     );
 
-Map<String, dynamic> _$$_DownloadsToJson(_$_Downloads instance) =>
+Map<String, dynamic> _$$_DownloadsModalToJson(_$_DownloadsModal instance) =>
     <String, dynamic>{
       'poster_path': instance.posterPath,
-      'backdrop_path': instance.backdropPath,
-      'title': instance.posterTitle,
-      'original_name': instance.posterName,
     };

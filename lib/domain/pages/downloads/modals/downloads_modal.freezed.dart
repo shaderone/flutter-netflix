@@ -14,124 +14,81 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Downloads _$DownloadsFromJson(Map<String, dynamic> json) {
-  return _Downloads.fromJson(json);
+DownloadsModal _$DownloadsModalFromJson(Map<String, dynamic> json) {
+  return _DownloadsModal.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Downloads {
+mixin _$DownloadsModal {
 // ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
-  String? get posterPath =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: "backdrop_path")
-  String? get backdropPath =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: "title")
-  String? get posterTitle =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
-  @JsonKey(name: "original_name")
-  String? get posterName => throw _privateConstructorUsedError;
+  String? get posterPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DownloadsCopyWith<Downloads> get copyWith =>
+  $DownloadsModalCopyWith<DownloadsModal> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DownloadsCopyWith<$Res> {
-  factory $DownloadsCopyWith(Downloads value, $Res Function(Downloads) then) =
-      _$DownloadsCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: "poster_path") String? posterPath,
-      @JsonKey(name: "backdrop_path") String? backdropPath,
-      @JsonKey(name: "title") String? posterTitle,
-      @JsonKey(name: "original_name") String? posterName});
+abstract class $DownloadsModalCopyWith<$Res> {
+  factory $DownloadsModalCopyWith(
+          DownloadsModal value, $Res Function(DownloadsModal) then) =
+      _$DownloadsModalCopyWithImpl<$Res>;
+  $Res call({@JsonKey(name: "poster_path") String? posterPath});
 }
 
 /// @nodoc
-class _$DownloadsCopyWithImpl<$Res> implements $DownloadsCopyWith<$Res> {
-  _$DownloadsCopyWithImpl(this._value, this._then);
+class _$DownloadsModalCopyWithImpl<$Res>
+    implements $DownloadsModalCopyWith<$Res> {
+  _$DownloadsModalCopyWithImpl(this._value, this._then);
 
-  final Downloads _value;
+  final DownloadsModal _value;
   // ignore: unused_field
-  final $Res Function(Downloads) _then;
+  final $Res Function(DownloadsModal) _then;
 
   @override
   $Res call({
     Object? posterPath = freezed,
-    Object? backdropPath = freezed,
-    Object? posterTitle = freezed,
-    Object? posterName = freezed,
   }) {
     return _then(_value.copyWith(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      backdropPath: backdropPath == freezed
-          ? _value.backdropPath
-          : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterTitle: posterTitle == freezed
-          ? _value.posterTitle
-          : posterTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterName: posterName == freezed
-          ? _value.posterName
-          : posterName // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$$_DownloadsCopyWith<$Res> implements $DownloadsCopyWith<$Res> {
-  factory _$$_DownloadsCopyWith(
-          _$_Downloads value, $Res Function(_$_Downloads) then) =
-      __$$_DownloadsCopyWithImpl<$Res>;
+abstract class _$$_DownloadsModalCopyWith<$Res>
+    implements $DownloadsModalCopyWith<$Res> {
+  factory _$$_DownloadsModalCopyWith(
+          _$_DownloadsModal value, $Res Function(_$_DownloadsModal) then) =
+      __$$_DownloadsModalCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: "poster_path") String? posterPath,
-      @JsonKey(name: "backdrop_path") String? backdropPath,
-      @JsonKey(name: "title") String? posterTitle,
-      @JsonKey(name: "original_name") String? posterName});
+  $Res call({@JsonKey(name: "poster_path") String? posterPath});
 }
 
 /// @nodoc
-class __$$_DownloadsCopyWithImpl<$Res> extends _$DownloadsCopyWithImpl<$Res>
-    implements _$$_DownloadsCopyWith<$Res> {
-  __$$_DownloadsCopyWithImpl(
-      _$_Downloads _value, $Res Function(_$_Downloads) _then)
-      : super(_value, (v) => _then(v as _$_Downloads));
+class __$$_DownloadsModalCopyWithImpl<$Res>
+    extends _$DownloadsModalCopyWithImpl<$Res>
+    implements _$$_DownloadsModalCopyWith<$Res> {
+  __$$_DownloadsModalCopyWithImpl(
+      _$_DownloadsModal _value, $Res Function(_$_DownloadsModal) _then)
+      : super(_value, (v) => _then(v as _$_DownloadsModal));
 
   @override
-  _$_Downloads get _value => super._value as _$_Downloads;
+  _$_DownloadsModal get _value => super._value as _$_DownloadsModal;
 
   @override
   $Res call({
     Object? posterPath = freezed,
-    Object? backdropPath = freezed,
-    Object? posterTitle = freezed,
-    Object? posterName = freezed,
   }) {
-    return _then(_$_Downloads(
+    return _then(_$_DownloadsModal(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      backdropPath: backdropPath == freezed
-          ? _value.backdropPath
-          : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterTitle: posterTitle == freezed
-          ? _value.posterTitle
-          : posterTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      posterName: posterName == freezed
-          ? _value.posterName
-          : posterName // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -139,98 +96,61 @@ class __$$_DownloadsCopyWithImpl<$Res> extends _$DownloadsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Downloads implements _Downloads {
-  const _$_Downloads(
-      {@JsonKey(name: "poster_path") required this.posterPath,
-      @JsonKey(name: "backdrop_path") required this.backdropPath,
-      @JsonKey(name: "title") required this.posterTitle,
-      @JsonKey(name: "original_name") required this.posterName});
+class _$_DownloadsModal implements _DownloadsModal {
+  const _$_DownloadsModal(
+      {@JsonKey(name: "poster_path") required this.posterPath});
 
-  factory _$_Downloads.fromJson(Map<String, dynamic> json) =>
-      _$$_DownloadsFromJson(json);
+  factory _$_DownloadsModal.fromJson(Map<String, dynamic> json) =>
+      _$$_DownloadsModalFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: "poster_path")
   final String? posterPath;
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: "backdrop_path")
-  final String? backdropPath;
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: "title")
-  final String? posterTitle;
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: "original_name")
-  final String? posterName;
 
   @override
   String toString() {
-    return 'Downloads(posterPath: $posterPath, backdropPath: $backdropPath, posterTitle: $posterTitle, posterName: $posterName)';
+    return 'DownloadsModal(posterPath: $posterPath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Downloads &&
+            other is _$_DownloadsModal &&
             const DeepCollectionEquality()
-                .equals(other.posterPath, posterPath) &&
-            const DeepCollectionEquality()
-                .equals(other.backdropPath, backdropPath) &&
-            const DeepCollectionEquality()
-                .equals(other.posterTitle, posterTitle) &&
-            const DeepCollectionEquality()
-                .equals(other.posterName, posterName));
+                .equals(other.posterPath, posterPath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(posterPath),
-      const DeepCollectionEquality().hash(backdropPath),
-      const DeepCollectionEquality().hash(posterTitle),
-      const DeepCollectionEquality().hash(posterName));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(posterPath));
 
   @JsonKey(ignore: true)
   @override
-  _$$_DownloadsCopyWith<_$_Downloads> get copyWith =>
-      __$$_DownloadsCopyWithImpl<_$_Downloads>(this, _$identity);
+  _$$_DownloadsModalCopyWith<_$_DownloadsModal> get copyWith =>
+      __$$_DownloadsModalCopyWithImpl<_$_DownloadsModal>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DownloadsToJson(this);
+    return _$$_DownloadsModalToJson(this);
   }
 }
 
-abstract class _Downloads implements Downloads {
-  const factory _Downloads(
-          {@JsonKey(name: "poster_path") required final String? posterPath,
-          @JsonKey(name: "backdrop_path") required final String? backdropPath,
-          @JsonKey(name: "title") required final String? posterTitle,
-          @JsonKey(name: "original_name") required final String? posterName}) =
-      _$_Downloads;
+abstract class _DownloadsModal implements DownloadsModal {
+  const factory _DownloadsModal(
+          {@JsonKey(name: "poster_path") required final String? posterPath}) =
+      _$_DownloadsModal;
 
-  factory _Downloads.fromJson(Map<String, dynamic> json) =
-      _$_Downloads.fromJson;
+  factory _DownloadsModal.fromJson(Map<String, dynamic> json) =
+      _$_DownloadsModal.fromJson;
 
   @override // ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: "backdrop_path")
-  String? get backdropPath => throw _privateConstructorUsedError;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: "title")
-  String? get posterTitle => throw _privateConstructorUsedError;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: "original_name")
-  String? get posterName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_DownloadsCopyWith<_$_Downloads> get copyWith =>
+  _$$_DownloadsModalCopyWith<_$_DownloadsModal> get copyWith =>
       throw _privateConstructorUsedError;
 }
