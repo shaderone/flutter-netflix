@@ -169,7 +169,7 @@ abstract class GetDownloadsPosters implements DownloadsEvent {
 /// @nodoc
 mixin _$DownloadsState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<DownloadsModal>? get downloadsPosterList =>
+  List<DownloadsModal> get downloadsPosterList =>
       throw _privateConstructorUsedError;
   Option<Either<MainFailure, List<DownloadsModal>>> get uiState =>
       throw _privateConstructorUsedError;
@@ -186,7 +186,7 @@ abstract class $DownloadsStateCopyWith<$Res> {
       _$DownloadsStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
-      List<DownloadsModal>? downloadsPosterList,
+      List<DownloadsModal> downloadsPosterList,
       Option<Either<MainFailure, List<DownloadsModal>>> uiState});
 }
 
@@ -213,7 +213,7 @@ class _$DownloadsStateCopyWithImpl<$Res>
       downloadsPosterList: downloadsPosterList == freezed
           ? _value.downloadsPosterList
           : downloadsPosterList // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModal>?,
+              as List<DownloadsModal>,
       uiState: uiState == freezed
           ? _value.uiState
           : uiState // ignore: cast_nullable_to_non_nullable
@@ -231,7 +231,7 @@ abstract class _$$_InitialCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
-      List<DownloadsModal>? downloadsPosterList,
+      List<DownloadsModal> downloadsPosterList,
       Option<Either<MainFailure, List<DownloadsModal>>> uiState});
 }
 
@@ -258,7 +258,7 @@ class __$$_InitialCopyWithImpl<$Res> extends _$DownloadsStateCopyWithImpl<$Res>
       downloadsPosterList: downloadsPosterList == freezed
           ? _value._downloadsPosterList
           : downloadsPosterList // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModal>?,
+              as List<DownloadsModal>,
       uiState: uiState == freezed
           ? _value.uiState
           : uiState // ignore: cast_nullable_to_non_nullable
@@ -272,19 +272,17 @@ class __$$_InitialCopyWithImpl<$Res> extends _$DownloadsStateCopyWithImpl<$Res>
 class _$_Initial implements _Initial {
   const _$_Initial(
       {required this.isLoading,
-      final List<DownloadsModal>? downloadsPosterList,
+      required final List<DownloadsModal> downloadsPosterList,
       required this.uiState})
       : _downloadsPosterList = downloadsPosterList;
 
   @override
   final bool isLoading;
-  final List<DownloadsModal>? _downloadsPosterList;
+  final List<DownloadsModal> _downloadsPosterList;
   @override
-  List<DownloadsModal>? get downloadsPosterList {
-    final value = _downloadsPosterList;
-    if (value == null) return null;
+  List<DownloadsModal> get downloadsPosterList {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_downloadsPosterList);
   }
 
   @override
@@ -322,14 +320,14 @@ class _$_Initial implements _Initial {
 abstract class _Initial implements DownloadsState {
   const factory _Initial(
       {required final bool isLoading,
-      final List<DownloadsModal>? downloadsPosterList,
+      required final List<DownloadsModal> downloadsPosterList,
       required final Option<Either<MainFailure, List<DownloadsModal>>>
           uiState}) = _$_Initial;
 
   @override
   bool get isLoading => throw _privateConstructorUsedError;
   @override
-  List<DownloadsModal>? get downloadsPosterList =>
+  List<DownloadsModal> get downloadsPosterList =>
       throw _privateConstructorUsedError;
   @override
   Option<Either<MainFailure, List<DownloadsModal>>> get uiState =>

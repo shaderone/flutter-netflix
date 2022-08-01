@@ -4,7 +4,7 @@ part of 'downloads_bloc.dart';
 class DownloadsState with _$DownloadsState {
   const factory DownloadsState({
     required bool isLoading,
-    List<DownloadsModal>? downloadsPosterList,
+    required List<DownloadsModal> downloadsPosterList,
     required Option<Either<MainFailure, List<DownloadsModal>>> uiState,
   }) = _Initial;
 
@@ -12,6 +12,7 @@ class DownloadsState with _$DownloadsState {
     return const DownloadsState(
       isLoading: false,
       uiState: None(),
+      downloadsPosterList: [],
     );
   }
 }

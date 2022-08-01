@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/bloc/downloads/downloads_bloc.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/presentation/common_widgets/app_bar_widget.dart';
 import 'package:netflix_clone/presentation/pages/downloads/widgets/poster_widget.dart';
