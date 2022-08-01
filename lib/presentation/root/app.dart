@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/bloc/downloads/downloads_bloc.dart';
 import 'package:netflix_clone/presentation/pages/downloads/download_screen.dart';
 import 'package:netflix_clone/presentation/pages/fast_laughs/fast_laughs_screen.dart';
 import 'package:netflix_clone/presentation/pages/home/home_screen.dart';
@@ -19,6 +21,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //The api is called in the root screen to avoid red screen
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsPosters());
+    });
     return ValueListenableBuilder(
       valueListenable: currentNavIndexNotifier,
       builder: (BuildContext context, int newpageIndex, Widget? _) {

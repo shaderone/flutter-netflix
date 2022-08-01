@@ -1,23 +1,18 @@
-import 'package:netflix_clone/domain/common_failures/main_failure.dart';
-import 'package:netflix_clone/domain/pages/downloads/modals/downloads_modal.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-part 'downloads_state.freezed.dart';
+part of 'downloads_bloc.dart';
 
 @freezed
 class DownloadsState with _$DownloadsState {
   const factory DownloadsState({
     required bool isLoading,
-    List<Downloads>? downloads,
-    required Option<Either<MainFailure, List<Downloads>>>
-        downloadsFailureOrSuccessOption,
-  }) = _DownloadsState;
+    required List<DownloadsModal> downloadsPosterList,
+    required Option<Either<MainFailure, List<DownloadsModal>>> uiState,
+  }) = _Initial;
 
-  //initial state of the downloadspage on app start
   factory DownloadsState.initial() {
-    return DownloadsState(
+    return const DownloadsState(
       isLoading: false,
-      downloadsFailureOrSuccessOption: none(),
+      uiState: None(),
+      downloadsPosterList: [],
     );
   }
 }

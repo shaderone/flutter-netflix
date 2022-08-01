@@ -3,11 +3,12 @@ part 'downloads_modal.freezed.dart';
 part 'downloads_modal.g.dart';
 
 @freezed
-class Downloads with _$Downloads {
-  const factory Downloads({
+class DownloadsModal with _$DownloadsModal {
+  const factory DownloadsModal({
+    // ignore: invalid_annotation_target
     @JsonKey(name: "poster_path") required String? posterPath,
-  }) = _Downloads;
+  }) = _DownloadsModal;
 
-  factory Downloads.fromJson(Map<String, dynamic> json) =>
-      _$DownloadsFromJson(json);
+  factory DownloadsModal.fromJson(Map<String, dynamic> json) =>
+      _$DownloadsModalFromJson(json);
 }
