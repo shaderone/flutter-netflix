@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/domain/common_failures/main_failure.dart';
-import 'package:netflix_clone/domain/pages/downloads/i_downloads_repo.dart';
+import 'package:netflix_clone/domain/pages/downloads/downloads_service.dart';
+
 import 'package:netflix_clone/domain/pages/downloads/modals/downloads_modal.dart';
 import 'package:netflix_clone/domain/pages/search/modal/search_modal.dart';
 import 'package:netflix_clone/domain/pages/search/search_service.dart';
@@ -13,7 +14,7 @@ part 'search_bloc.freezed.dart';
 
 @injectable
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final IDownloadsRepo _downloadsService;
+  final DownloadsService _downloadsService;
   final SearchService _searchService;
   // here we pass the intial state of the 'whole bloc' in super()
   SearchBloc(this._downloadsService, this._searchService)
@@ -54,7 +55,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               isError: true,
             );
           },
-          (List<Downloads> data) {
+          (List<DownloadsModal> data) {
             return SearchState(
               searchResponseData: [],
               idleListData: data,

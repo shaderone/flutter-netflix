@@ -4,7 +4,7 @@ part of 'search_bloc.dart';
 class SearchState with _$SearchState {
   const factory SearchState({
     required List<SearchResp> searchResponseData,
-    required List<Downloads> idleListData,
+    required List<DownloadsModal> idleListData,
     required bool isSearchLoading,
     required bool isError,
   }) = _SearchState;

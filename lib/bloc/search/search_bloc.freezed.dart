@@ -312,7 +312,7 @@ abstract class SearchMedia implements SearchEvent {
 /// @nodoc
 mixin _$SearchState {
   List<SearchResp> get searchResponseData => throw _privateConstructorUsedError;
-  List<Downloads> get idleListData => throw _privateConstructorUsedError;
+  List<DownloadsModal> get idleListData => throw _privateConstructorUsedError;
   bool get isSearchLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
@@ -328,7 +328,7 @@ abstract class $SearchStateCopyWith<$Res> {
       _$SearchStateCopyWithImpl<$Res>;
   $Res call(
       {List<SearchResp> searchResponseData,
-      List<Downloads> idleListData,
+      List<DownloadsModal> idleListData,
       bool isSearchLoading,
       bool isError});
 }
@@ -356,7 +356,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
       idleListData: idleListData == freezed
           ? _value.idleListData
           : idleListData // ignore: cast_nullable_to_non_nullable
-              as List<Downloads>,
+              as List<DownloadsModal>,
       isSearchLoading: isSearchLoading == freezed
           ? _value.isSearchLoading
           : isSearchLoading // ignore: cast_nullable_to_non_nullable
@@ -378,7 +378,7 @@ abstract class _$$_SearchStateCopyWith<$Res>
   @override
   $Res call(
       {List<SearchResp> searchResponseData,
-      List<Downloads> idleListData,
+      List<DownloadsModal> idleListData,
       bool isSearchLoading,
       bool isError});
 }
@@ -408,7 +408,7 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
       idleListData: idleListData == freezed
           ? _value._idleListData
           : idleListData // ignore: cast_nullable_to_non_nullable
-              as List<Downloads>,
+              as List<DownloadsModal>,
       isSearchLoading: isSearchLoading == freezed
           ? _value.isSearchLoading
           : isSearchLoading // ignore: cast_nullable_to_non_nullable
@@ -426,7 +426,7 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 class _$_SearchState implements _SearchState {
   const _$_SearchState(
       {required final List<SearchResp> searchResponseData,
-      required final List<Downloads> idleListData,
+      required final List<DownloadsModal> idleListData,
       required this.isSearchLoading,
       required this.isError})
       : _searchResponseData = searchResponseData,
@@ -439,9 +439,9 @@ class _$_SearchState implements _SearchState {
     return EqualUnmodifiableListView(_searchResponseData);
   }
 
-  final List<Downloads> _idleListData;
+  final List<DownloadsModal> _idleListData;
   @override
-  List<Downloads> get idleListData {
+  List<DownloadsModal> get idleListData {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_idleListData);
   }
@@ -487,14 +487,14 @@ class _$_SearchState implements _SearchState {
 abstract class _SearchState implements SearchState {
   const factory _SearchState(
       {required final List<SearchResp> searchResponseData,
-      required final List<Downloads> idleListData,
+      required final List<DownloadsModal> idleListData,
       required final bool isSearchLoading,
       required final bool isError}) = _$_SearchState;
 
   @override
   List<SearchResp> get searchResponseData => throw _privateConstructorUsedError;
   @override
-  List<Downloads> get idleListData => throw _privateConstructorUsedError;
+  List<DownloadsModal> get idleListData => throw _privateConstructorUsedError;
   @override
   bool get isSearchLoading => throw _privateConstructorUsedError;
   @override
