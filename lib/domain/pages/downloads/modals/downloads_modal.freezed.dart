@@ -22,7 +22,16 @@ DownloadsModal _$DownloadsModalFromJson(Map<String, dynamic> json) {
 mixin _$DownloadsModal {
 // ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
-  String? get posterPath => throw _privateConstructorUsedError;
+  String? get posterPath =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: "title")
+  String? get mediaName =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: "name")
+  String? get mainMediaName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +44,11 @@ abstract class $DownloadsModalCopyWith<$Res> {
   factory $DownloadsModalCopyWith(
           DownloadsModal value, $Res Function(DownloadsModal) then) =
       _$DownloadsModalCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: "poster_path") String? posterPath});
+  $Res call(
+      {@JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "title") String? mediaName,
+      @JsonKey(name: "name") String? mainMediaName});
 }
 
 /// @nodoc
@@ -50,11 +63,26 @@ class _$DownloadsModalCopyWithImpl<$Res>
   @override
   $Res call({
     Object? posterPath = freezed,
+    Object? backdropPath = freezed,
+    Object? mediaName = freezed,
+    Object? mainMediaName = freezed,
   }) {
     return _then(_value.copyWith(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backdropPath: backdropPath == freezed
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaName: mediaName == freezed
+          ? _value.mediaName
+          : mediaName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mainMediaName: mainMediaName == freezed
+          ? _value.mainMediaName
+          : mainMediaName // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -67,7 +95,11 @@ abstract class _$$_DownloadsModalCopyWith<$Res>
           _$_DownloadsModal value, $Res Function(_$_DownloadsModal) then) =
       __$$_DownloadsModalCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: "poster_path") String? posterPath});
+  $Res call(
+      {@JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "backdrop_path") String? backdropPath,
+      @JsonKey(name: "title") String? mediaName,
+      @JsonKey(name: "name") String? mainMediaName});
 }
 
 /// @nodoc
@@ -84,11 +116,26 @@ class __$$_DownloadsModalCopyWithImpl<$Res>
   @override
   $Res call({
     Object? posterPath = freezed,
+    Object? backdropPath = freezed,
+    Object? mediaName = freezed,
+    Object? mainMediaName = freezed,
   }) {
     return _then(_$_DownloadsModal(
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backdropPath: backdropPath == freezed
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mediaName: mediaName == freezed
+          ? _value.mediaName
+          : mediaName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mainMediaName: mainMediaName == freezed
+          ? _value.mainMediaName
+          : mainMediaName // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -98,7 +145,10 @@ class __$$_DownloadsModalCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DownloadsModal implements _DownloadsModal {
   const _$_DownloadsModal(
-      {@JsonKey(name: "poster_path") required this.posterPath});
+      {@JsonKey(name: "poster_path") required this.posterPath,
+      @JsonKey(name: "backdrop_path") required this.backdropPath,
+      @JsonKey(name: "title") required this.mediaName,
+      @JsonKey(name: "name") required this.mainMediaName});
 
   factory _$_DownloadsModal.fromJson(Map<String, dynamic> json) =>
       _$$_DownloadsModalFromJson(json);
@@ -107,10 +157,22 @@ class _$_DownloadsModal implements _DownloadsModal {
   @override
   @JsonKey(name: "poster_path")
   final String? posterPath;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: "backdrop_path")
+  final String? backdropPath;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: "title")
+  final String? mediaName;
+// ignore: invalid_annotation_target
+  @override
+  @JsonKey(name: "name")
+  final String? mainMediaName;
 
   @override
   String toString() {
-    return 'DownloadsModal(posterPath: $posterPath)';
+    return 'DownloadsModal(posterPath: $posterPath, backdropPath: $backdropPath, mediaName: $mediaName, mainMediaName: $mainMediaName)';
   }
 
   @override
@@ -119,13 +181,22 @@ class _$_DownloadsModal implements _DownloadsModal {
         (other.runtimeType == runtimeType &&
             other is _$_DownloadsModal &&
             const DeepCollectionEquality()
-                .equals(other.posterPath, posterPath));
+                .equals(other.posterPath, posterPath) &&
+            const DeepCollectionEquality()
+                .equals(other.backdropPath, backdropPath) &&
+            const DeepCollectionEquality().equals(other.mediaName, mediaName) &&
+            const DeepCollectionEquality()
+                .equals(other.mainMediaName, mainMediaName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(posterPath));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(posterPath),
+      const DeepCollectionEquality().hash(backdropPath),
+      const DeepCollectionEquality().hash(mediaName),
+      const DeepCollectionEquality().hash(mainMediaName));
 
   @JsonKey(ignore: true)
   @override
@@ -140,7 +211,10 @@ class _$_DownloadsModal implements _DownloadsModal {
 
 abstract class _DownloadsModal implements DownloadsModal {
   const factory _DownloadsModal(
-          {@JsonKey(name: "poster_path") required final String? posterPath}) =
+          {@JsonKey(name: "poster_path") required final String? posterPath,
+          @JsonKey(name: "backdrop_path") required final String? backdropPath,
+          @JsonKey(name: "title") required final String? mediaName,
+          @JsonKey(name: "name") required final String? mainMediaName}) =
       _$_DownloadsModal;
 
   factory _DownloadsModal.fromJson(Map<String, dynamic> json) =
@@ -149,6 +223,15 @@ abstract class _DownloadsModal implements DownloadsModal {
   @override // ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath => throw _privateConstructorUsedError;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: "title")
+  String? get mediaName => throw _privateConstructorUsedError;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: "name")
+  String? get mainMediaName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DownloadsModalCopyWith<_$_DownloadsModal> get copyWith =>

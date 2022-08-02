@@ -20,14 +20,17 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   DownloadsBloc(this.downloadsService) : super(DownloadsState.initial()) {
     on<GetDownloadsPosters>(
       (event, emit) async {
-        emit(
-          //initial page load
-          state.copyWith(
-            isLoading: true,
-            //since before api call there is and will not be an error or a valid response
-            uiState: const None(),
-          ),
-        );
+        if (state.downloadsPosterList.isNotEmpty) {
+          emit(
+            //initial page load
+            state.copyWith(
+              isLoading: true,
+              //since before api call there is and will not be an error or a valid response
+              uiState: const None(),
+            ),
+          );
+          return;
+        }
         //calling the api via abstract class throught its object
         final Either<MainFailure, List<DownloadsModal>> downloadsApiResponse =
             await downloadsService.getDownloadsPosters();

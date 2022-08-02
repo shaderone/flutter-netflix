@@ -14,30 +14,31 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SearchResp _$SearchRespFromJson(Map<String, dynamic> json) {
-  return _SearchResp.fromJson(json);
+SearchModal _$SearchModalFromJson(Map<String, dynamic> json) {
+  return _SearchModal.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SearchResp {
+mixin _$SearchModal {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "poster_path")
-  String? get posterPath => throw _privateConstructorUsedError;
+  String? get posterPath =>
+      throw _privateConstructorUsedError; //@JsonKey(name: "backdrop_path") required String? backdropPath,
   @JsonKey(name: "title")
   String? get mediaName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SearchRespCopyWith<SearchResp> get copyWith =>
+  $SearchModalCopyWith<SearchModal> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SearchRespCopyWith<$Res> {
-  factory $SearchRespCopyWith(
-          SearchResp value, $Res Function(SearchResp) then) =
-      _$SearchRespCopyWithImpl<$Res>;
+abstract class $SearchModalCopyWith<$Res> {
+  factory $SearchModalCopyWith(
+          SearchModal value, $Res Function(SearchModal) then) =
+      _$SearchModalCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "poster_path") String? posterPath,
@@ -45,12 +46,12 @@ abstract class $SearchRespCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchRespCopyWithImpl<$Res> implements $SearchRespCopyWith<$Res> {
-  _$SearchRespCopyWithImpl(this._value, this._then);
+class _$SearchModalCopyWithImpl<$Res> implements $SearchModalCopyWith<$Res> {
+  _$SearchModalCopyWithImpl(this._value, this._then);
 
-  final SearchResp _value;
+  final SearchModal _value;
   // ignore: unused_field
-  final $Res Function(SearchResp) _then;
+  final $Res Function(SearchModal) _then;
 
   @override
   $Res call({
@@ -76,11 +77,11 @@ class _$SearchRespCopyWithImpl<$Res> implements $SearchRespCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_SearchRespCopyWith<$Res>
-    implements $SearchRespCopyWith<$Res> {
-  factory _$$_SearchRespCopyWith(
-          _$_SearchResp value, $Res Function(_$_SearchResp) then) =
-      __$$_SearchRespCopyWithImpl<$Res>;
+abstract class _$$_SearchModalCopyWith<$Res>
+    implements $SearchModalCopyWith<$Res> {
+  factory _$$_SearchModalCopyWith(
+          _$_SearchModal value, $Res Function(_$_SearchModal) then) =
+      __$$_SearchModalCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: "id") int? id,
@@ -89,14 +90,14 @@ abstract class _$$_SearchRespCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchRespCopyWithImpl<$Res> extends _$SearchRespCopyWithImpl<$Res>
-    implements _$$_SearchRespCopyWith<$Res> {
-  __$$_SearchRespCopyWithImpl(
-      _$_SearchResp _value, $Res Function(_$_SearchResp) _then)
-      : super(_value, (v) => _then(v as _$_SearchResp));
+class __$$_SearchModalCopyWithImpl<$Res> extends _$SearchModalCopyWithImpl<$Res>
+    implements _$$_SearchModalCopyWith<$Res> {
+  __$$_SearchModalCopyWithImpl(
+      _$_SearchModal _value, $Res Function(_$_SearchModal) _then)
+      : super(_value, (v) => _then(v as _$_SearchModal));
 
   @override
-  _$_SearchResp get _value => super._value as _$_SearchResp;
+  _$_SearchModal get _value => super._value as _$_SearchModal;
 
   @override
   $Res call({
@@ -104,7 +105,7 @@ class __$$_SearchRespCopyWithImpl<$Res> extends _$SearchRespCopyWithImpl<$Res>
     Object? posterPath = freezed,
     Object? mediaName = freezed,
   }) {
-    return _then(_$_SearchResp(
+    return _then(_$_SearchModal(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -123,14 +124,14 @@ class __$$_SearchRespCopyWithImpl<$Res> extends _$SearchRespCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SearchResp implements _SearchResp {
-  const _$_SearchResp(
+class _$_SearchModal implements _SearchModal {
+  const _$_SearchModal(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "poster_path") required this.posterPath,
       @JsonKey(name: "title") required this.mediaName});
 
-  factory _$_SearchResp.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchRespFromJson(json);
+  factory _$_SearchModal.fromJson(Map<String, dynamic> json) =>
+      _$$_SearchModalFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -138,20 +139,21 @@ class _$_SearchResp implements _SearchResp {
   @override
   @JsonKey(name: "poster_path")
   final String? posterPath;
+//@JsonKey(name: "backdrop_path") required String? backdropPath,
   @override
   @JsonKey(name: "title")
   final String? mediaName;
 
   @override
   String toString() {
-    return 'SearchResp(id: $id, posterPath: $posterPath, mediaName: $mediaName)';
+    return 'SearchModal(id: $id, posterPath: $posterPath, mediaName: $mediaName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchResp &&
+            other is _$_SearchModal &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.posterPath, posterPath) &&
@@ -168,24 +170,24 @@ class _$_SearchResp implements _SearchResp {
 
   @JsonKey(ignore: true)
   @override
-  _$$_SearchRespCopyWith<_$_SearchResp> get copyWith =>
-      __$$_SearchRespCopyWithImpl<_$_SearchResp>(this, _$identity);
+  _$$_SearchModalCopyWith<_$_SearchModal> get copyWith =>
+      __$$_SearchModalCopyWithImpl<_$_SearchModal>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchRespToJson(this);
+    return _$$_SearchModalToJson(this);
   }
 }
 
-abstract class _SearchResp implements SearchResp {
-  const factory _SearchResp(
+abstract class _SearchModal implements SearchModal {
+  const factory _SearchModal(
           {@JsonKey(name: "id") required final int? id,
           @JsonKey(name: "poster_path") required final String? posterPath,
           @JsonKey(name: "title") required final String? mediaName}) =
-      _$_SearchResp;
+      _$_SearchModal;
 
-  factory _SearchResp.fromJson(Map<String, dynamic> json) =
-      _$_SearchResp.fromJson;
+  factory _SearchModal.fromJson(Map<String, dynamic> json) =
+      _$_SearchModal.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -193,11 +195,11 @@ abstract class _SearchResp implements SearchResp {
   @override
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
-  @override
+  @override //@JsonKey(name: "backdrop_path") required String? backdropPath,
   @JsonKey(name: "title")
   String? get mediaName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchRespCopyWith<_$_SearchResp> get copyWith =>
+  _$$_SearchModalCopyWith<_$_SearchModal> get copyWith =>
       throw _privateConstructorUsedError;
 }

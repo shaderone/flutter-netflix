@@ -15,13 +15,13 @@ class IdleSearchWidget extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
         //log(state.idleListData.runtimeType.toString());
-        return state.isSearchLoading
+        return state.isLoading
             ? const Center(child: CircularProgressIndicator())
             : ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  final singleMediaInfo = state.idleListData[index];
+                  final singleMediaInfo = state.idleSearchData[index];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -34,20 +34,18 @@ class IdleSearchWidget extends StatelessWidget {
                         child: const SizedBox(height: 20),
                       ),
                       TopSearchListItem(
-                        title:
-                            //singleMediaInfo.posterTitle ??
-                            //singleMediaInfo.posterName ??
+                        title: singleMediaInfo.mainMediaName ??
+                            singleMediaInfo.mediaName ??
                             "no title",
                         backdropPath:
-                            //singleMediaInfo.backdropPath ??
-                            "No poster",
+                            singleMediaInfo.backdropPath ?? "No poster",
                       )
                     ],
                   );
                 },
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 15),
-                itemCount: state.idleListData.length,
+                itemCount: state.idleSearchData.length,
               );
       },
     );
@@ -68,10 +66,10 @@ class TopSearchListItem extends StatelessWidget {
     final screenDimensions = MediaQuery.of(context).size;
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        log(state.toString());
+        //log(state.toString());
         if (state.isError) {
           return const Text("Error");
-        } else if (state.idleListData.isEmpty) {
+        } else if (state.idleSearchData.isEmpty) {
           return const Text("IdleList is empty");
         } else {
           return Row(

@@ -23,23 +23,24 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     //Idle state
     on<Initialize>(
       (event, emit) async {
-        if (state.idleListData.isNotEmpty) {
+        if (state.idleSearchData.isNotEmpty) {
           //it means api has already fetched the data
           emit(
             SearchState(
               searchResponseData: [],
-              idleListData: state.idleListData,
-              isSearchLoading: false,
+              idleSearchData: state.idleSearchData,
+              isLoading: false,
               isError: false,
             ),
           );
           return;
         }
+        //this will work as the else block and notify the UI that api fetching is ongoing
         emit(
           const SearchState(
             searchResponseData: [],
-            idleListData: [],
-            isSearchLoading: true,
+            idleSearchData: [],
+            isLoading: true,
             isError: false,
           ),
         );
@@ -50,16 +51,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           (MainFailure failure) {
             return const SearchState(
               searchResponseData: [],
-              idleListData: [],
-              isSearchLoading: false,
+              idleSearchData: [],
+              isLoading: false,
               isError: true,
             );
           },
           (List<DownloadsModal> data) {
             return SearchState(
               searchResponseData: [],
-              idleListData: data,
-              isSearchLoading: false,
+              idleSearchData: data,
+              isLoading: false,
               isError: false,
             );
           },

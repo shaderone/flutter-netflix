@@ -311,9 +311,10 @@ abstract class SearchMedia implements SearchEvent {
 
 /// @nodoc
 mixin _$SearchState {
-  List<SearchResp> get searchResponseData => throw _privateConstructorUsedError;
-  List<DownloadsModal> get idleListData => throw _privateConstructorUsedError;
-  bool get isSearchLoading => throw _privateConstructorUsedError;
+  List<SearchModal> get searchResponseData =>
+      throw _privateConstructorUsedError;
+  List<DownloadsModal> get idleSearchData => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -327,9 +328,9 @@ abstract class $SearchStateCopyWith<$Res> {
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
   $Res call(
-      {List<SearchResp> searchResponseData,
-      List<DownloadsModal> idleListData,
-      bool isSearchLoading,
+      {List<SearchModal> searchResponseData,
+      List<DownloadsModal> idleSearchData,
+      bool isLoading,
       bool isError});
 }
 
@@ -344,22 +345,22 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   @override
   $Res call({
     Object? searchResponseData = freezed,
-    Object? idleListData = freezed,
-    Object? isSearchLoading = freezed,
+    Object? idleSearchData = freezed,
+    Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
       searchResponseData: searchResponseData == freezed
           ? _value.searchResponseData
           : searchResponseData // ignore: cast_nullable_to_non_nullable
-              as List<SearchResp>,
-      idleListData: idleListData == freezed
-          ? _value.idleListData
-          : idleListData // ignore: cast_nullable_to_non_nullable
+              as List<SearchModal>,
+      idleSearchData: idleSearchData == freezed
+          ? _value.idleSearchData
+          : idleSearchData // ignore: cast_nullable_to_non_nullable
               as List<DownloadsModal>,
-      isSearchLoading: isSearchLoading == freezed
-          ? _value.isSearchLoading
-          : isSearchLoading // ignore: cast_nullable_to_non_nullable
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       isError: isError == freezed
           ? _value.isError
@@ -377,9 +378,9 @@ abstract class _$$_SearchStateCopyWith<$Res>
       __$$_SearchStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<SearchResp> searchResponseData,
-      List<DownloadsModal> idleListData,
-      bool isSearchLoading,
+      {List<SearchModal> searchResponseData,
+      List<DownloadsModal> idleSearchData,
+      bool isLoading,
       bool isError});
 }
 
@@ -396,22 +397,22 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchResponseData = freezed,
-    Object? idleListData = freezed,
-    Object? isSearchLoading = freezed,
+    Object? idleSearchData = freezed,
+    Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
     return _then(_$_SearchState(
       searchResponseData: searchResponseData == freezed
           ? _value._searchResponseData
           : searchResponseData // ignore: cast_nullable_to_non_nullable
-              as List<SearchResp>,
-      idleListData: idleListData == freezed
-          ? _value._idleListData
-          : idleListData // ignore: cast_nullable_to_non_nullable
+              as List<SearchModal>,
+      idleSearchData: idleSearchData == freezed
+          ? _value._idleSearchData
+          : idleSearchData // ignore: cast_nullable_to_non_nullable
               as List<DownloadsModal>,
-      isSearchLoading: isSearchLoading == freezed
-          ? _value.isSearchLoading
-          : isSearchLoading // ignore: cast_nullable_to_non_nullable
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       isError: isError == freezed
           ? _value.isError
@@ -425,35 +426,35 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 
 class _$_SearchState implements _SearchState {
   const _$_SearchState(
-      {required final List<SearchResp> searchResponseData,
-      required final List<DownloadsModal> idleListData,
-      required this.isSearchLoading,
+      {required final List<SearchModal> searchResponseData,
+      required final List<DownloadsModal> idleSearchData,
+      required this.isLoading,
       required this.isError})
       : _searchResponseData = searchResponseData,
-        _idleListData = idleListData;
+        _idleSearchData = idleSearchData;
 
-  final List<SearchResp> _searchResponseData;
+  final List<SearchModal> _searchResponseData;
   @override
-  List<SearchResp> get searchResponseData {
+  List<SearchModal> get searchResponseData {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchResponseData);
   }
 
-  final List<DownloadsModal> _idleListData;
+  final List<DownloadsModal> _idleSearchData;
   @override
-  List<DownloadsModal> get idleListData {
+  List<DownloadsModal> get idleSearchData {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_idleListData);
+    return EqualUnmodifiableListView(_idleSearchData);
   }
 
   @override
-  final bool isSearchLoading;
+  final bool isLoading;
   @override
   final bool isError;
 
   @override
   String toString() {
-    return 'SearchState(searchResponseData: $searchResponseData, idleListData: $idleListData, isSearchLoading: $isSearchLoading, isError: $isError)';
+    return 'SearchState(searchResponseData: $searchResponseData, idleSearchData: $idleSearchData, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -464,9 +465,8 @@ class _$_SearchState implements _SearchState {
             const DeepCollectionEquality()
                 .equals(other._searchResponseData, _searchResponseData) &&
             const DeepCollectionEquality()
-                .equals(other._idleListData, _idleListData) &&
-            const DeepCollectionEquality()
-                .equals(other.isSearchLoading, isSearchLoading) &&
+                .equals(other._idleSearchData, _idleSearchData) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.isError, isError));
   }
 
@@ -474,8 +474,8 @@ class _$_SearchState implements _SearchState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_searchResponseData),
-      const DeepCollectionEquality().hash(_idleListData),
-      const DeepCollectionEquality().hash(isSearchLoading),
+      const DeepCollectionEquality().hash(_idleSearchData),
+      const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
@@ -486,17 +486,18 @@ class _$_SearchState implements _SearchState {
 
 abstract class _SearchState implements SearchState {
   const factory _SearchState(
-      {required final List<SearchResp> searchResponseData,
-      required final List<DownloadsModal> idleListData,
-      required final bool isSearchLoading,
+      {required final List<SearchModal> searchResponseData,
+      required final List<DownloadsModal> idleSearchData,
+      required final bool isLoading,
       required final bool isError}) = _$_SearchState;
 
   @override
-  List<SearchResp> get searchResponseData => throw _privateConstructorUsedError;
+  List<SearchModal> get searchResponseData =>
+      throw _privateConstructorUsedError;
   @override
-  List<DownloadsModal> get idleListData => throw _privateConstructorUsedError;
+  List<DownloadsModal> get idleSearchData => throw _privateConstructorUsedError;
   @override
-  bool get isSearchLoading => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
   bool get isError => throw _privateConstructorUsedError;
   @override
