@@ -1,8 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/bloc/search/search_bloc.dart';
+import 'package:netflix_clone/domain/debounce/debounce.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({
+  final _debouncer = Debouncer(milliseconds: 800);
+  final TextEditingController _searchController = TextEditingController();
+  SearchField({
     Key? key,
   }) : super(key: key);
 
@@ -11,6 +18,7 @@ class SearchField extends StatelessWidget {
     return Column(
       children: [
         CupertinoSearchTextField(
+          controller: _searchController,
           prefixIcon: const Icon(
             CupertinoIcons.search,
             color: Colors.grey,
@@ -22,6 +30,18 @@ class SearchField extends StatelessWidget {
             CupertinoIcons.xmark_circle_fill,
             color: Colors.grey,
           ),
+          onChanged: (String inputVal) {
+            if (inputVal.isEmpty) {
+              return;
+            }
+            _debouncer.run(
+              () => BlocProvider.of<SearchBloc>(context).add(
+                SearchMedia(query: inputVal),
+              ),
+            );
+            //log(inputVal);
+            //log(_searchController.text);
+          },
         ),
         const SizedBox(height: 20),
       ],

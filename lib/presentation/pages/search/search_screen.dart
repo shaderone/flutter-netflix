@@ -25,9 +25,19 @@ class SearchScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
-            children: const [
+            children: [
               SearchField(),
-              Expanded(child: IdleSearchWidget()),
+              BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, state) {
+                  return state.searchResponseData.isEmpty
+                      ? const Expanded(
+                          child: IdleSearchWidget(),
+                        )
+                      : const Expanded(
+                          child: SearchResultsWidget(),
+                        );
+                },
+              ),
               //Expanded(child: SearchResultsWidget()),
             ],
           ),
