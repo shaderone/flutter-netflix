@@ -12,7 +12,6 @@ class FastLaughState with _$FastLaughState {
     return const FastLaughState(
       profileList: [],
       isLoading: false,
-      //true
       isError: false,
     );
   }

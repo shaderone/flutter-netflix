@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/bloc/fastLaugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/core/strings.dart';
@@ -85,11 +86,46 @@ class VideoListItem extends StatelessWidget {
             child: Column(
               children: [
                 VideoActionsProfileItem(profilePath: posterPath),
+                ValueListenableBuilder(
+                  valueListenable: likedVideosListNotifier,
+                  builder: (BuildContext context, Set<int> likedVideosList,
+                      Widget? _) {
+                    final idx = index;
+                    if (likedVideosList.contains(idx)) {
+                      return GestureDetector(
+                        onTap: () {
+                          //BlocProvider.of<FastLaughBloc>(context).add(
+                          //  UnLikeVideo(id: idx),
+                          //);
+                          likedVideosList.remove(idx);
+                          likedVideosListNotifier.notifyListeners();
+                        },
+                        child: const VideoActionsListItem(
+                          icon: Icons.favorite_rounded,
+                          iconText: "Liked",
+                        ),
+                      );
+                    } else {
+                      return GestureDetector(
+                        onTap: () {
+                          //BlocProvider.of<FastLaughBloc>(context).add(
+                          //  LikeVideo(id: idx),
+                          //);
+                          likedVideosList.add(idx);
+                          likedVideosListNotifier.notifyListeners();
+                        },
+                        child: const VideoActionsListItem(
+                          icon: Icons.sentiment_very_satisfied_outlined,
+                          iconText: "LOL",
+                        ),
+                      );
+                    }
+                  },
+                ),
                 const VideoActionsListItem(
-                    icon: Icons.sentiment_very_satisfied_outlined,
-                    iconText: "80.5k"),
-                const VideoActionsListItem(
-                    icon: Icons.add, iconText: "My List"),
+                  icon: Icons.add,
+                  iconText: "My List",
+                ),
                 GestureDetector(
                   onTap: () {
                     final videoLink = InheritedFastLaughsScreen.of(context)
@@ -107,7 +143,9 @@ class VideoListItem extends StatelessWidget {
                   ),
                 ),
                 const VideoActionsListItem(
-                    icon: Icons.play_arrow, iconText: "Play"),
+                  icon: Icons.play_arrow,
+                  iconText: "Play",
+                ),
               ],
             ),
           ),

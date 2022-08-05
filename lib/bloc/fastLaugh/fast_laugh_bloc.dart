@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/bloc/search/search_bloc.dart';
@@ -19,31 +20,51 @@ const tempVideoUrl = [
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
 ];
 
+final ValueNotifier<Set<int>> likedVideosListNotifier = ValueNotifier({});
+
 @injectable
 class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
   final DownloadsService _downloadsService;
   FastLaughBloc(this._downloadsService) : super(FastLaughState.initial()) {
     on<Initialize>(
       (event, emit) async {
-        emit(state.copyWith(
-          isLoading: true,
-          isError: false,
-          profileList: [],
-        ));
+        emit(
+          state.copyWith(
+            isLoading: true,
+            isError: false,
+            profileList: [],
+          ),
+        );
         final res = await _downloadsService.getDownloadsPosters();
         final currentFastLaughState = res.fold(
           (MainFailure failure) {
             return state.copyWith(
-                isLoading: false, profileList: [], isError: true);
+              isLoading: false,
+              profileList: [],
+              isError: true,
+            );
           },
           (List<DownloadsModal> data) {
             //log("from fastbloc - data - \n${res.toString()}");
             return state.copyWith(
-                isLoading: false, profileList: data, isError: false);
+              isLoading: false,
+              profileList: data,
+              isError: false,
+            );
           },
         );
         emit(currentFastLaughState);
       },
     );
+
+    on<LikeVideo>((event, emit) async {
+      likedVideosListNotifier.value.add(event.id);
+      likedVideosListNotifier.notifyListeners();
+    });
+
+    on<UnLikeVideo>((event, emit) async {
+      likedVideosListNotifier.value.remove(event.id);
+      likedVideosListNotifier.notifyListeners();
+    });
   }
 }
