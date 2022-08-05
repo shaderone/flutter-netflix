@@ -5,6 +5,7 @@ import 'package:netflix_clone/bloc/fastLaugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/core/strings.dart';
 import 'package:netflix_clone/presentation/pages/fast_laughs/fast_laughs_screen.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoListItem extends StatelessWidget {
@@ -89,10 +90,21 @@ class VideoListItem extends StatelessWidget {
                     iconText: "80.5k"),
                 const VideoActionsListItem(
                     icon: Icons.add, iconText: "My List"),
-                const VideoActionsListItem(
-                  icon: Icons.send,
-                  iconText: "10.4k",
-                  angle: -45,
+                GestureDetector(
+                  onTap: () {
+                    final videoLink = InheritedFastLaughsScreen.of(context)
+                            ?.mediaData
+                            .mainMediaName ??
+                        InheritedFastLaughsScreen.of(context)
+                            ?.mediaData
+                            .mediaName;
+                    if (videoLink != null) Share.share(videoLink);
+                  },
+                  child: const VideoActionsListItem(
+                    icon: Icons.send,
+                    iconText: "10.4k",
+                    angle: -45,
+                  ),
                 ),
                 const VideoActionsListItem(
                     icon: Icons.play_arrow, iconText: "Play"),
@@ -195,7 +207,7 @@ class _FastLaughVideoPlayerState extends State<FastLaughVideoPlayer> {
     _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
     _videoPlayerController.initialize().then((value) {
       setState(() {
-        _videoPlayerController.play();
+        _videoPlayerController.pause();
       });
     });
   }
