@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors.dart';
+import 'package:netflix_clone/core/strings.dart';
+import 'package:netflix_clone/presentation/pages/fast_laughs/fast_laughs_screen.dart';
 
 class VideoListItem extends StatelessWidget {
   final int index;
@@ -9,6 +11,8 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        InheritedFastLaughsScreen.of(context)?.mediaData.posterPath;
     return Stack(
       children: [
         Container(
@@ -28,6 +32,7 @@ class VideoListItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: 120,
+                //logo
                 child: Image.asset("assets/aot.png"),
               ),
               Padding(
@@ -70,18 +75,20 @@ class VideoListItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
-              children: const [
-                VideoActionsProfileItem(),
-                VideoActionsListItem(
+              children: [
+                VideoActionsProfileItem(profilePath: posterPath),
+                const VideoActionsListItem(
                     icon: Icons.sentiment_very_satisfied_outlined,
                     iconText: "80.5k"),
-                VideoActionsListItem(icon: Icons.add, iconText: "My List"),
-                VideoActionsListItem(
+                const VideoActionsListItem(
+                    icon: Icons.add, iconText: "My List"),
+                const VideoActionsListItem(
                   icon: Icons.send,
                   iconText: "10.4k",
                   angle: -45,
                 ),
-                VideoActionsListItem(icon: Icons.play_arrow, iconText: "Play"),
+                const VideoActionsListItem(
+                    icon: Icons.play_arrow, iconText: "Play"),
               ],
             ),
           ),
@@ -92,7 +99,9 @@ class VideoListItem extends StatelessWidget {
 }
 
 class VideoActionsProfileItem extends StatelessWidget {
-  const VideoActionsProfileItem({Key? key}) : super(key: key);
+  final String? profilePath;
+  const VideoActionsProfileItem({Key? key, required this.profilePath})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,14 +110,17 @@ class VideoActionsProfileItem extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage("assets/profile.jpg"),
+            backgroundImage: NetworkImage(profilePath == null
+                ? "https://static.wikia.nocookie.net/villains/images/4/4c/Eren_meets_Yeagerists.png/revision/latest?cb=20210302172340"
+                : "$imageAppendUrl$profilePath"),
           ),
           Positioned(
             top: 45,
             child: SizedBox(
               width: 60,
+              //logo
               child: Image.asset("assets/aot.png"),
             ),
           )
