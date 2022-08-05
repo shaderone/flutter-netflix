@@ -40,7 +40,8 @@ class FastLaughsScreen extends StatelessWidget {
           builder: (context, state) {
             if (state.isLoading) {
               return const Center(
-                  child: CircularProgressIndicator(strokeWidth: 2));
+                  child:
+                      Center(child: CircularProgressIndicator(strokeWidth: 2)));
             } else if (state.isError) {
               return const Text("Error fetching data");
             } else if (state.profileList.isEmpty) {

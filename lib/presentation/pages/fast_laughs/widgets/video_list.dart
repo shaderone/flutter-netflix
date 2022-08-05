@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/bloc/fastLaugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/core/colors.dart';
 import 'package:netflix_clone/core/strings.dart';
 import 'package:netflix_clone/presentation/pages/fast_laughs/fast_laughs_screen.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoListItem extends StatelessWidget {
   final int index;
@@ -13,18 +15,23 @@ class VideoListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final posterPath =
         InheritedFastLaughsScreen.of(context)?.mediaData.posterPath;
+
+    //index % tempVideoUrl.length = to make sure that the index will never be greater than the lenght of the available videoUrls
+    final videoUrl = tempVideoUrl[index % tempVideoUrl.length];
     return Stack(
       children: [
-        Container(
-          //color: Colors.accents[index + 4],
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image:
-                  NetworkImage("https://wallpapercave.com/wp/wp10504676.jpg"),
-            ),
-          ),
-        ),
+        FastLaughVideoPlayer(
+            videoUrl: videoUrl, onStateChanged: (bool videoState) {}),
+        //Container(
+        //  //color: Colors.accents[index + 4],
+        //  decoration: const BoxDecoration(
+        //    image: DecorationImage(
+        //      fit: BoxFit.cover,
+        //      image:
+        //          NetworkImage("https://wallpapercave.com/wp/wp10504676.jpg"),
+        //    ),
+        //  ),
+        //),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
@@ -162,5 +169,54 @@ class VideoActionsListItem extends StatelessWidget {
         const SizedBox(height: 20),
       ],
     );
+  }
+}
+
+class FastLaughVideoPlayer extends StatefulWidget {
+  final String videoUrl;
+  final void Function(bool isPlaying) onStateChanged;
+  const FastLaughVideoPlayer({
+    Key? key,
+    required this.videoUrl,
+    required this.onStateChanged,
+  }) : super(key: key);
+
+  @override
+  State<FastLaughVideoPlayer> createState() => _FastLaughVideoPlayerState();
+}
+
+class _FastLaughVideoPlayerState extends State<FastLaughVideoPlayer> {
+  late VideoPlayerController _videoPlayerController;
+
+  @override
+  void initState() {
+    super.initState();
+    //here videoUrl cannot be directly accessed because the variable is inside a stateful Widget
+    _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
+    _videoPlayerController.initialize().then((value) {
+      setState(() {
+        _videoPlayerController.play();
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: _videoPlayerController.value.isInitialized
+          ? AspectRatio(
+              aspectRatio: _videoPlayerController.value.aspectRatio,
+              child: VideoPlayer(_videoPlayerController),
+            )
+          : const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+    );
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
   }
 }
