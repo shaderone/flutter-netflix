@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -34,6 +32,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               isLoading: false,
               isError: false,
             ),
+            //state.copyWith(idleSearchData: state.idleSearchData),
           );
           return;
         }
@@ -45,6 +44,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             isLoading: true,
             isError: false,
           ),
+          //state.copyWith(isLoading: true, idleSearchData: []),
         );
         //get images of trending data
         final res = await _downloadsService.getDownloadsPosters();
@@ -57,6 +57,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               isLoading: false,
               isError: true,
             );
+            //state.copyWith(isError: true, isLoading: false);
           },
           (List<DownloadsModal> data) {
             return SearchState(
@@ -65,6 +66,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               isLoading: false,
               isError: false,
             );
+            //state.copyWith(idleSearchData: data, isError: false);
           },
         );
         emit(currentSearchState);
