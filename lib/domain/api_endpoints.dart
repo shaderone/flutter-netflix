@@ -5,4 +5,6 @@ class ApiEndpoints {
   static const downloads = "${baseURL}trending/all/day?api_key=$apiKey";
   static const search = "${baseURL}search/movie?api_key=$apiKey";
   //static const search = "${baseURL}search/movie?api_key=$apiKey&language=en-US&page=1&include_adult=false";
+
+  static const newAndHot = "${baseURL}discover/movie?api_key=$apiKey";
 }

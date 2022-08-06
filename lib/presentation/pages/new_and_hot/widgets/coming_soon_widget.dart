@@ -1,28 +1,45 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix_clone/core/colors.dart';
+import 'package:netflix_clone/core/strings.dart';
+import 'package:netflix_clone/domain/pages/new_and_hot/modals/new_and_hot_modal.dart';
 import 'package:netflix_clone/presentation/pages/home/widgets/hero.dart';
 
 class NewAndHotDatedContent extends StatelessWidget {
+  final NewAndHotModal mediainfo;
+  final String parsedDate;
   const NewAndHotDatedContent({
+    required this.mediainfo,
     Key? key,
+    required this.parsedDate,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        NewAndHotDate(),
-        Expanded(child: NewAndHotContent()),
+      children: [
+        NewAndHotDate(date: parsedDate),
+        Expanded(
+          child: NewAndHotContent(
+            backdropPath: mediainfo.backdropPath,
+            description: mediainfo.overview,
+            name: mediainfo.mainMediaName,
+          ),
+        ),
       ],
     );
   }
 }
 
 class NewAndHotDate extends StatelessWidget {
+  final String date;
   const NewAndHotDate({
     Key? key,
+    required this.date,
   }) : super(key: key);
 
   @override
@@ -32,18 +49,18 @@ class NewAndHotDate extends StatelessWidget {
       height: 100,
       child: Column(
         children: [
-          const Text(
-            "FEB",
-            style: TextStyle(
+          Text(
+            date.split(" ").first,
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.grey,
             ),
           ),
           Text(
-            "11",
+            date.split(" ").last,
             style: GoogleFonts.montserrat(
-              letterSpacing: 8,
-              fontSize: 34,
+              letterSpacing: 4,
+              fontSize: 28,
               fontWeight: FontWeight.bold,
               color: Colors.grey.shade300,
             ),
@@ -55,10 +72,19 @@ class NewAndHotDate extends StatelessWidget {
 }
 
 class NewAndHotContent extends StatelessWidget {
+  final String backdropPath;
+  final String name;
+  final String description;
+
+  //genere and logo will be added later
+
   final bool shareIcon;
   const NewAndHotContent({
     Key? key,
     this.shareIcon = false,
+    required this.backdropPath,
+    required this.description,
+    required this.name,
   }) : super(key: key);
 
   @override
@@ -72,7 +98,7 @@ class NewAndHotContent extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 16 / 9,
                 child: Image.network(
-                  "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+                  "$imageAppendUrl$backdropPath",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -157,14 +183,16 @@ class NewAndHotContent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Volume 2 coming July 8th",
+                              name,
                               style: GoogleFonts.montserrat(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              "Coming on July 8th Coming on July 8th Coming on July 8th Coming on July 8th Coming on July 8th Coming on July 8th Coming on July 8th Coming on July 8th ",
-                              style: TextStyle(
+                            Text(
+                              description,
+                              maxLines: 4,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14,
                               ),
