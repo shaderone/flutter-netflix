@@ -27,9 +27,11 @@ class NewAndHotScreen extends StatelessWidget {
           children: [
             ComingSoon(
               //key is to persist data and to avoid any duplication
-              key: Key("coming soon"),
+              key: Key("coming_soon"),
             ),
-            EveryonesWatching(),
+            EveryonesWatching(
+              key: Key("everyones_watching"),
+            ),
           ],
         ),
         bottomNavigationBar: BottomNavWidget(),
@@ -64,33 +66,31 @@ class ComingSoon extends StatelessWidget {
               return const Center(
                 child: Text("Error while fetching Data"),
               );
+            } else if (state.comingSoonData.isEmpty) {
+              return const Center(
+                child: Text("Coming Soon list is empty"),
+              );
             } else {
-              if (state.comingSoonData.isEmpty) {
-                return const Center(
-                  child: Text("Coming Soon list is empty"),
-                );
-              } else {
-                final singleMediaInfo = state.comingSoonData[index];
-                final _date = DateTime.parse(singleMediaInfo.date);
-                //.replaceAll('-', '/')
-                final parsedDate = DateFormat.MMMd('en-us').format(_date);
-                //log(parsedDate);
-                return ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  children: [
-                    // ignore: unnecessary_null_comparison
-                    if (singleMediaInfo.id != null)
-                      NewAndHotDatedContent(
-                        mediainfo: singleMediaInfo,
-                        parsedDate: parsedDate,
-                      )
-                    else
-                      const SizedBox(),
-                  ],
-                );
-              }
+              final singleMediaInfo = state.comingSoonData[index];
+              final date = DateTime.parse(singleMediaInfo.date);
+              //.replaceAll('-', '/')
+              final parsedDate = DateFormat.MMMd('en-us').format(date);
+              //log(parsedDate);
+              return ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                children: [
+                  // ignore: unnecessary_null_comparison
+                  if (singleMediaInfo.id != null)
+                    NewAndHotDatedContent(
+                      mediainfo: singleMediaInfo,
+                      parsedDate: parsedDate,
+                    )
+                  else
+                    const SizedBox(),
+                ],
+              );
             }
           },
           separatorBuilder: (context, index) => const SizedBox(),
@@ -108,28 +108,48 @@ class EveryonesWatching extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<NewAndHotBloc>(context)
+          .add(const GetEveryonesWatchingData());
+    });
     return BlocBuilder<NewAndHotBloc, NewAndHotState>(
       builder: (context, state) {
         return ListView.separated(
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            final singleMediaInfo = state.comingSoonData[index];
-            return ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              children: [
-                NewAndHotContent(
-                  shareIcon: true,
-                  backdropPath: singleMediaInfo.backdropPath,
-                  description: singleMediaInfo.overview,
-                  name: singleMediaInfo.mainMediaName,
-                )
-              ],
-            );
+            if (state.isLoading) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                ),
+              );
+            } else if (state.isError) {
+              return const Center(
+                child: Text("Error while fetching Data"),
+              );
+            } else if (state.trendingMediaData.isEmpty) {
+              return const Center(
+                child: Text("Trending list is empty"),
+              );
+            } else {
+              final singleMediaInfo = state.trendingMediaData[index];
+              return ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                children: [
+                  NewAndHotContent(
+                    shareIcon: true,
+                    backdropPath: singleMediaInfo.backdropPath,
+                    description: singleMediaInfo.overview,
+                    name: singleMediaInfo.mainMediaName,
+                  )
+                ],
+              );
+            }
           },
           separatorBuilder: (context, index) => const SizedBox(height: 10),
-          itemCount: 10,
+          itemCount: state.trendingMediaData.length,
         );
       },
     );

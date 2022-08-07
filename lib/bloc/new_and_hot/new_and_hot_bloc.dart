@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/domain/common_failures/main_failure.dart';
 import 'package:netflix_clone/domain/pages/new_and_hot/modals/new_and_hot_modal.dart';
+import 'package:netflix_clone/domain/pages/new_and_hot/modals/new_and_hot_trending_modal.dart';
 import 'package:netflix_clone/domain/pages/new_and_hot/new_and_hot_service.dart';
 
 part 'new_and_hot_event.dart';
@@ -25,7 +26,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
             isError: false,
           ),
         );
-        final res = await _newAndHotService.getTrendingMediaData();
+        final res = await _newAndHotService.getComingSoonData();
         //log(res.toString());
         final currentNewAndHotState = res.fold(
           (MainFailure failure) {
@@ -39,7 +40,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
           (List<NewAndHotModal> data) {
             return NewAndHotState(
               comingSoonData: data,
-              trendingMediaData: [],
+              trendingMediaData: state.trendingMediaData,
               isLoading: false,
               isError: false,
             );
@@ -48,6 +49,39 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
         emit(currentNewAndHotState);
       },
     );
-    on<GetEveryonesWatchingData>((event, emit) {});
+
+    on<GetEveryonesWatchingData>(
+      (event, emit) async {
+        emit(
+          const NewAndHotState(
+            comingSoonData: [],
+            trendingMediaData: [],
+            isLoading: true,
+            isError: false,
+          ),
+        );
+        final res = await _newAndHotService.getPopularShowsData();
+        //log(res.toString());
+        final currentNewAndHotState = res.fold(
+          (MainFailure failure) {
+            return const NewAndHotState(
+              comingSoonData: [],
+              trendingMediaData: [],
+              isLoading: false,
+              isError: true,
+            );
+          },
+          (List<NewAndHotTrendingModal> data) {
+            return NewAndHotState(
+              comingSoonData: state.comingSoonData,
+              trendingMediaData: data,
+              isLoading: false,
+              isError: false,
+            );
+          },
+        );
+        emit(currentNewAndHotState);
+      },
+    );
   }
 }

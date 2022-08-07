@@ -4,7 +4,7 @@ part of 'new_and_hot_bloc.dart';
 class NewAndHotState with _$NewAndHotState {
   const factory NewAndHotState({
     required List<NewAndHotModal> comingSoonData,
-    required List<NewAndHotModal> trendingMediaData,
+    required List<NewAndHotTrendingModal> trendingMediaData,
     required bool isLoading,
     required bool isError,
   }) = _Initial;

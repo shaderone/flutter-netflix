@@ -59,8 +59,7 @@ class NewAndHotDate extends StatelessWidget {
           Text(
             date.split(" ").last,
             style: GoogleFonts.montserrat(
-              letterSpacing: 4,
-              fontSize: 28,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.grey.shade300,
             ),
@@ -190,7 +189,7 @@ class NewAndHotContent extends StatelessWidget {
                             const SizedBox(height: 10),
                             Text(
                               description,
-                              maxLines: 4,
+                              maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                 color: Colors.grey,
