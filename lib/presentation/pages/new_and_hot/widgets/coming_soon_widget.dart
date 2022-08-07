@@ -99,6 +99,27 @@ class NewAndHotContent extends StatelessWidget {
                 child: Image.network(
                   "$imageAppendUrl$backdropPath",
                   fit: BoxFit.cover,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? progress) {
+                    if (progress == null) {
+                      return child;
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      );
+                    }
+                  },
+                  errorBuilder:
+                      (BuildContext context, Object obj, StackTrace? trace) {
+                    return const Center(
+                      child: Icon(
+                        Icons.wifi_off,
+                        color: Colors.white,
+                      ),
+                    );
+                  },
                 ),
               ),
               Positioned(
